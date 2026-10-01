@@ -32,7 +32,6 @@ import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import ru.lct2026.finedu.productcore.domain.model.Dzynki
 import ru.lct2026.finedu.productcore.domain.model.PetFur
@@ -59,11 +58,7 @@ import ru.lct2026.finedu.productcore.ui.preview.FinEduPreview
 import ru.lct2026.finedu.productcore.ui.theme.FinEduTheme
 
 @Composable
-internal fun QuestsRoute(
-    onNavigate: (FinEduRoute) -> Unit,
-    onTabSelect: (FinTab) -> Unit,
-    viewModel: QuestsViewModel = hiltViewModel()
-) {
+internal fun QuestsRoute(onNavigate: (FinEduRoute) -> Unit, onTabSelect: (FinTab) -> Unit, viewModel: QuestsViewModel) {
     val state by viewModel.stateFlow.collectAsStateWithLifecycle()
     ObserveEvents(viewModel.events) { event ->
         when (event) {

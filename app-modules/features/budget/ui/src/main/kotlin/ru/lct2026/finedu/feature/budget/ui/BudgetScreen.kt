@@ -23,7 +23,6 @@ import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import ru.lct2026.finedu.feature.budget.ui.component.DistributionBar
 import ru.lct2026.finedu.feature.budget.ui.component.PlanFactBar
@@ -58,7 +57,7 @@ internal fun BudgetRoute(
     onParent: () -> Unit,
     onShop: () -> Unit,
     onHome: () -> Unit,
-    viewModel: BudgetViewModel = hiltViewModel()
+    viewModel: BudgetViewModel
 ) {
     val state by viewModel.stateFlow.collectAsStateWithLifecycle()
     BudgetScreen(

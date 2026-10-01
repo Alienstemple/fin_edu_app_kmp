@@ -1,12 +1,11 @@
 package ru.lct2026.finedu.productcore.data.content
 
-import javax.inject.Inject
 import kotlinx.serialization.json.Json
 import ru.lct2026.finedu.productcore.data.mapper.toDomain
 import ru.lct2026.finedu.productcore.domain.model.GameContent
 
 /** Собирает [GameContent] из JSON-файлов `assets/content/`. [read] возвращает текст файла по имени. */
-internal class ContentParser @Inject constructor(private val json: Json) {
+internal class ContentParser(private val json: Json) {
 
     fun parse(read: (fileName: String) -> String): GameContent {
         val learn = json.decodeFromString<LearnDto>(read(LEARN))

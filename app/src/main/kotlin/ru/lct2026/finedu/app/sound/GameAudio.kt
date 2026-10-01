@@ -7,14 +7,13 @@ import android.media.AudioManager
 import android.media.MediaPlayer
 import android.media.SoundPool
 import androidx.annotation.RawRes
-import dagger.hilt.android.qualifiers.ApplicationContext
-import javax.inject.Inject
-import javax.inject.Singleton
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import me.tatarka.inject.annotations.Inject
 import ru.lct2026.finedu.app.R
+import ru.lct2026.finedu.productcore.data.di.AppScope
 import ru.lct2026.finedu.productcore.ui.sound.MusicTrack
 import ru.lct2026.finedu.productcore.ui.sound.SoundEffect
 import ru.lct2026.finedu.productcore.ui.sound.SoundPlayer
@@ -27,8 +26,9 @@ import ru.lct2026.finedu.productcore.ui.sound.SoundPlayer
  * если там разрешены медиа (так по умолчанию), — громче системной громкости медиа приложение звучать не может.
  * Вызовы — только с главного потока.
  */
-@Singleton
-internal class GameAudio @Inject constructor(@ApplicationContext private val context: Context) : SoundPlayer {
+@AppScope
+@Inject
+internal class GameAudio(private val context: Context) : SoundPlayer {
 
     private val audioManager = context.getSystemService(AudioManager::class.java)
     private val scope = MainScope()

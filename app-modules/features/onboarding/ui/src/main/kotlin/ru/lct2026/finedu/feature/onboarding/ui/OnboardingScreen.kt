@@ -19,7 +19,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import ru.lct2026.finedu.feature.onboarding.ui.component.ChoiceStep
 import ru.lct2026.finedu.feature.onboarding.ui.component.ResultStep
@@ -32,11 +31,7 @@ import ru.lct2026.finedu.productcore.ui.preview.FinEduPreview
 import ru.lct2026.finedu.productcore.ui.theme.FinEduTheme
 
 @Composable
-internal fun OnboardingRoute(
-    onOpenHero: () -> Unit,
-    onClose: () -> Unit,
-    viewModel: OnboardingViewModel = hiltViewModel()
-) {
+internal fun OnboardingRoute(onOpenHero: () -> Unit, onClose: () -> Unit, viewModel: OnboardingViewModel) {
     val state by viewModel.stateFlow.collectAsStateWithLifecycle()
     ObserveEvents(viewModel.events) { event ->
         when (event) {

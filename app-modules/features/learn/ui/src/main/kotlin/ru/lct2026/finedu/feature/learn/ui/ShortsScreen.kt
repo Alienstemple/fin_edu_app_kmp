@@ -23,7 +23,6 @@ import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import ru.lct2026.finedu.feature.learn.ui.component.ShortsFeed
 import ru.lct2026.finedu.feature.learn.ui.component.ShortsPlayer
@@ -38,7 +37,7 @@ import ru.lct2026.finedu.productcore.ui.components.MinTouchTarget
 import ru.lct2026.finedu.productcore.ui.preview.FinEduPreview
 
 @Composable
-internal fun ShortsRoute(onBack: () -> Unit, viewModel: ShortsViewModel = hiltViewModel()) {
+internal fun ShortsRoute(onBack: () -> Unit, viewModel: ShortsViewModel) {
     val state by viewModel.stateFlow.collectAsStateWithLifecycle()
     ShortsScreen(
         state = state,

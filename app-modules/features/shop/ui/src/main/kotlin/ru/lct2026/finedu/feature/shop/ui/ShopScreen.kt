@@ -34,7 +34,6 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import ru.lct2026.finedu.feature.shop.ui.component.ItemPicture
 import ru.lct2026.finedu.feature.shop.ui.component.PurchaseContent
@@ -63,7 +62,7 @@ import ru.lct2026.finedu.productcore.ui.components.labelRes
 import ru.lct2026.finedu.productcore.ui.preview.FinEduPreview
 
 @Composable
-internal fun ShopRoute(navigation: ShopNavigation, viewModel: ShopViewModel = hiltViewModel()) {
+internal fun ShopRoute(navigation: ShopNavigation, viewModel: ShopViewModel) {
     val state by viewModel.stateFlow.collectAsStateWithLifecycle()
     ShopScreen(
         state = state,

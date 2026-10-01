@@ -27,7 +27,6 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import ru.lct2026.finedu.feature.hero.ui.component.LookPicker
 import ru.lct2026.finedu.productcore.domain.model.PetFur
@@ -45,7 +44,7 @@ import ru.lct2026.finedu.productcore.ui.preview.FinEduPreview
 import ru.lct2026.finedu.productcore.ui.theme.FinEduTheme
 
 @Composable
-internal fun HeroRoute(onBack: () -> Unit, onOpenHome: () -> Unit, viewModel: HeroViewModel = hiltViewModel()) {
+internal fun HeroRoute(onBack: () -> Unit, onOpenHome: () -> Unit, viewModel: HeroViewModel) {
     val state by viewModel.stateFlow.collectAsStateWithLifecycle()
     ObserveEvents(viewModel.events) { event ->
         when (event) {

@@ -1,8 +1,6 @@
 package ru.lct2026.finedu.feature.hero.ui
 
 import androidx.lifecycle.viewModelScope
-import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.launch
 import ru.lct2026.finedu.productcore.domain.model.GameEngine
 import ru.lct2026.finedu.productcore.domain.model.PetFur
@@ -11,8 +9,7 @@ import ru.lct2026.finedu.productcore.domain.model.Profile
 import ru.lct2026.finedu.productcore.domain.repository.GameRepository
 import ru.lct2026.finedu.productcore.ui.viewmodel.StatefulViewModel
 
-@HiltViewModel
-internal class HeroViewModel @Inject constructor(private val gameRepository: GameRepository) :
+internal class HeroViewModel(private val gameRepository: GameRepository) :
     StatefulViewModel<HeroUiState>(HeroUiState()) {
 
     fun onFurClick(fur: PetFur) {

@@ -7,12 +7,12 @@ import org.gradle.kotlin.dsl.configure
 
 /**
  * Модуль `data` фичи: реализации репозиториев из `domain`, хранение (Room/DataStore), контент из assets,
- * Hilt-привязки. Без Compose. Видит `domain` своей фичи (подключается явно в build.gradle.kts).
+ * kotlin-inject привязки. Без Compose. Видит `domain` своей фичи (подключается явно в build.gradle.kts).
  */
 class AndroidFeatureDataConventionPlugin : Plugin<Project> {
     override fun apply(target: Project): Unit = with(target) {
         pluginManager.apply(libs.pluginId("android-library"))
-        pluginManager.apply("convention.hilt")
+        pluginManager.apply("convention.kotlin-inject")
 
         extensions.configure<LibraryExtension> {
             configureKotlinAndroid(this)

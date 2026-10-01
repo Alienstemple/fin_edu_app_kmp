@@ -12,7 +12,7 @@ import org.gradle.kotlin.dsl.configure
 class AndroidFeatureUiConventionPlugin : Plugin<Project> {
     override fun apply(target: Project): Unit = with(target) {
         pluginManager.apply(libs.pluginId("android-library"))
-        pluginManager.apply("convention.hilt")
+        pluginManager.apply("convention.kotlin-inject")
 
         extensions.configure<LibraryExtension> {
             configureKotlinAndroid(this)
@@ -25,7 +25,6 @@ class AndroidFeatureUiConventionPlugin : Plugin<Project> {
             add("implementation", project(":app-modules:product-core:domain"))
             add("implementation", libs.lib("androidx-lifecycle-runtime-compose"))
             add("implementation", libs.lib("androidx-lifecycle-viewmodel-compose"))
-            add("implementation", libs.lib("androidx-hilt-lifecycle-viewmodel-compose"))
             add("testImplementation", libs.lib("test-robolectric"))
         }
         addUnitTestDependencies()

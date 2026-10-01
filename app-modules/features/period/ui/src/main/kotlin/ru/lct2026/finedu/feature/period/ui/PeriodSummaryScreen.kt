@@ -22,7 +22,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import ru.lct2026.finedu.feature.period.ui.component.ExpectationCard
 import ru.lct2026.finedu.feature.period.ui.component.RealityCard
@@ -56,7 +55,7 @@ internal fun PeriodSummaryRoute(
     onNextWeek: () -> Unit,
     onHelpClick: () -> Unit,
     onParentClick: () -> Unit,
-    viewModel: PeriodSummaryViewModel = hiltViewModel()
+    viewModel: PeriodSummaryViewModel
 ) {
     val state by viewModel.stateFlow.collectAsStateWithLifecycle()
     ObserveEvents(viewModel.events) { event ->

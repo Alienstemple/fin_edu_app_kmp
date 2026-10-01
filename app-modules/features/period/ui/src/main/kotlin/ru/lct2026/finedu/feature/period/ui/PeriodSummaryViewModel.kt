@@ -2,8 +2,6 @@ package ru.lct2026.finedu.feature.period.ui
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
-import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import ru.lct2026.finedu.productcore.domain.model.GameEngine
@@ -17,8 +15,7 @@ import ru.lct2026.finedu.productcore.ui.viewmodel.StatefulViewModel
  * Итоги недели. Неделя закрывается здесь ровно один раз: факт закрытия хранится в [SavedStateHandle], поэтому
  * после пересоздания экрана показываются уже сохранённые итоги из истории.
  */
-@HiltViewModel
-internal class PeriodSummaryViewModel @Inject constructor(
+internal class PeriodSummaryViewModel(
     private val gameRepository: GameRepository,
     private val savedStateHandle: SavedStateHandle
 ) : StatefulViewModel<PeriodSummaryUiState>(PeriodSummaryUiState.Loading) {

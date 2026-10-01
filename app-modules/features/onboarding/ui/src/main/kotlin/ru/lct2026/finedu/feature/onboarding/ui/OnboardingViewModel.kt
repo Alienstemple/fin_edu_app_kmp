@@ -1,8 +1,6 @@
 package ru.lct2026.finedu.feature.onboarding.ui
 
 import androidx.lifecycle.viewModelScope
-import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import ru.lct2026.finedu.productcore.domain.repository.GameRepository
@@ -10,8 +8,7 @@ import ru.lct2026.finedu.productcore.ui.event.CloseScreenEvent
 import ru.lct2026.finedu.productcore.ui.viewmodel.StatefulViewModel
 
 /** Онбординг — учебная сцена: игровое состояние только читается, чтобы понять, куда вести после финала. */
-@HiltViewModel
-internal class OnboardingViewModel @Inject constructor(private val gameRepository: GameRepository) :
+internal class OnboardingViewModel(private val gameRepository: GameRepository) :
     StatefulViewModel<OnboardingUiState>(OnboardingUiState()) {
 
     init {

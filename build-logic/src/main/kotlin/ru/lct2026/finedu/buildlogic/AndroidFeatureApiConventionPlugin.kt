@@ -6,7 +6,7 @@ import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
 
 /**
- * Модуль `api`: только публичные контракты. Без Compose, Hilt и реализаций.
+ * Модуль `api`: только публичные контракты. Без Compose, DI и реализаций.
  */
 class AndroidFeatureApiConventionPlugin : Plugin<Project> {
     override fun apply(target: Project): Unit = with(target) {

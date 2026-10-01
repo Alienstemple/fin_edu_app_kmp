@@ -14,15 +14,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.produceState
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
+import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.viewModelFactory
 import kotlinx.coroutines.flow.first
 import ru.lct2026.finedu.app.navigation.FinEduNavHost
 import ru.lct2026.finedu.app.sound.GameAudio
 import ru.lct2026.finedu.app.sound.SoundSettingsViewModel
 import ru.lct2026.finedu.productcore.domain.model.Settings
-import ru.lct2026.finedu.productcore.domain.repository.GameRepository
-import ru.lct2026.finedu.productcore.navigation.api.FeatureNavigationContribution
 import ru.lct2026.finedu.productcore.navigation.api.FinEduRoute
 import ru.lct2026.finedu.productcore.ui.components.FinEduBackground
 import ru.lct2026.finedu.productcore.ui.sound.LocalSoundControls
@@ -30,19 +28,16 @@ import ru.lct2026.finedu.productcore.ui.sound.LocalSoundPlayer
 import ru.lct2026.finedu.productcore.ui.sound.SoundControls
 import ru.lct2026.finedu.productcore.ui.theme.FinEduTheme
 
-@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    @Inject
-    lateinit var navigationContributions: Set<@JvmSuppressWildcards FeatureNavigationContribution>
+    private val component by lazy { (application as FinEduApplication).component }
+    private val navigationContributions by lazy { component.navigationContributions }
+    private val gameRepository by lazy { component.gameRepository }
+    private val gameAudio by lazy { component.gameAudio }
 
-    @Inject
-    lateinit var gameRepository: GameRepository
-
-    @Inject
-    internal lateinit var gameAudio: GameAudio
-
-    private val soundSettings: SoundSettingsViewModel by viewModels()
+    private val soundSettings: SoundSettingsViewModel by viewModels {
+        viewModelFactory { initializer { SoundSettingsViewModel(component.gameRepository) } }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,8 +1,6 @@
 package ru.lct2026.finedu.feature.parent.ui
 
 import androidx.lifecycle.viewModelScope
-import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlin.random.Random
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -26,8 +24,7 @@ import ru.lct2026.finedu.productcore.ui.viewmodel.StatefulViewModel
 
 // Барьер и четыре вкладки — один экран (без новых маршрутов), поэтому действий у ViewModel много.
 @Suppress("TooManyFunctions")
-@HiltViewModel
-internal class ParentViewModel @Inject constructor(
+internal class ParentViewModel(
     private val gameRepository: GameRepository,
     private val contentRepository: ContentRepository
 ) : StatefulViewModel<ParentUiState>(ParentUiState(gate = ParentGate.random(Random.Default))) {

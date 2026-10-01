@@ -25,7 +25,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import ru.lct2026.finedu.feature.home.ui.component.BubbleField
 import ru.lct2026.finedu.feature.home.ui.component.CollapsedBubble
@@ -57,11 +56,7 @@ import ru.lct2026.finedu.productcore.ui.preview.FinEduPreview
 import ru.lct2026.finedu.productcore.ui.theme.FinEduTheme
 
 @Composable
-internal fun HomeRoute(
-    onNavigate: (FinEduRoute) -> Unit,
-    onSelectTab: (FinTab) -> Unit,
-    viewModel: HomeViewModel = hiltViewModel()
-) {
+internal fun HomeRoute(onNavigate: (FinEduRoute) -> Unit, onSelectTab: (FinTab) -> Unit, viewModel: HomeViewModel) {
     val state by viewModel.stateFlow.collectAsStateWithLifecycle()
     HomeScreen(
         state = state,

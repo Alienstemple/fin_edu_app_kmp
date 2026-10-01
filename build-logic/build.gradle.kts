@@ -9,7 +9,6 @@ dependencies {
     compileOnly(libs.kotlin.gradlePlugin)
     compileOnly(libs.compose.gradlePlugin)
     compileOnly(libs.ksp.gradlePlugin)
-    compileOnly(libs.hilt.gradlePlugin)
     compileOnly(libs.detekt.gradlePlugin)
     compileOnly(libs.spotless.gradlePlugin)
     compileOnly(libs.kover.gradlePlugin)
@@ -73,10 +72,6 @@ gradlePlugin {
         register("kotlinInject") {
             id = "convention.kotlin-inject"
             implementationClass = "ru.lct2026.finedu.buildlogic.KotlinInjectConventionPlugin"
-        }
-        register("hilt") {
-            id = "convention.hilt"
-            implementationClass = "ru.lct2026.finedu.buildlogic.HiltConventionPlugin"
         }
     }
 }

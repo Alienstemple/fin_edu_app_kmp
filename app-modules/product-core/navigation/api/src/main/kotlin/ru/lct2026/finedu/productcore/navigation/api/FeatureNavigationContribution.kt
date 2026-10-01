@@ -6,7 +6,7 @@ import androidx.navigation.NavGraphBuilder
 /**
  * Вклад фичи в общий граф навигации.
  *
- * Каждый feature `impl` модуль регистрирует свои экраны через Hilt multibinding (`@Binds @IntoSet`),
+ * Каждый feature `impl` модуль регистрирует свои экраны через kotlin-inject multibinding (`@Provides @IntoSet`),
  * `:app` собирает все вклады в один `NavHost`. Фичи не зависят друг от друга: переходы — только через [FinEduRoute].
  */
 interface FeatureNavigationContribution {

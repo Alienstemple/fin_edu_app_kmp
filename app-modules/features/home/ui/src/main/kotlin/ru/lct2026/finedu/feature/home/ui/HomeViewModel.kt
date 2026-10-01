@@ -1,8 +1,6 @@
 package ru.lct2026.finedu.feature.home.ui
 
 import androidx.lifecycle.viewModelScope
-import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.filterNotNull
@@ -19,8 +17,7 @@ import ru.lct2026.finedu.productcore.domain.repository.GameRepository
 import ru.lct2026.finedu.productcore.ui.illustration.PetMood
 import ru.lct2026.finedu.productcore.ui.viewmodel.StatefulViewModel
 
-@HiltViewModel
-internal class HomeViewModel @Inject constructor(
+internal class HomeViewModel(
     private val gameRepository: GameRepository,
     private val contentRepository: ContentRepository
 ) : StatefulViewModel<HomeUiState>(HomeUiState.Loading) {

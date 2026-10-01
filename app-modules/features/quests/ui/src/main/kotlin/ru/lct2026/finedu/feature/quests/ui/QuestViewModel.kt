@@ -1,10 +1,6 @@
 package ru.lct2026.finedu.feature.quests.ui
 
 import androidx.lifecycle.viewModelScope
-import dagger.assisted.Assisted
-import dagger.assisted.AssistedFactory
-import dagger.assisted.AssistedInject
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -15,9 +11,8 @@ import ru.lct2026.finedu.productcore.domain.repository.GameRepository
 import ru.lct2026.finedu.productcore.ui.event.CloseScreenEvent
 import ru.lct2026.finedu.productcore.ui.viewmodel.StatefulViewModel
 
-@HiltViewModel(assistedFactory = QuestViewModel.Factory::class)
-internal class QuestViewModel @AssistedInject constructor(
-    @Assisted private val questId: String,
+internal class QuestViewModel(
+    private val questId: String,
     private val gameRepository: GameRepository,
     private val contentRepository: ContentRepository
 ) : StatefulViewModel<QuestUiState>(QuestUiState.Loading) {
@@ -109,10 +104,5 @@ internal class QuestViewModel @AssistedInject constructor(
                 QuestUiState.Loading, is QuestUiState.Choice -> this
             }
         }
-    }
-
-    @AssistedFactory
-    interface Factory {
-        fun create(questId: String): QuestViewModel
     }
 }

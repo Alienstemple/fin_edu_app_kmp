@@ -1,8 +1,6 @@
 package ru.lct2026.finedu.feature.quests.ui
 
 import androidx.lifecycle.viewModelScope
-import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -16,8 +14,7 @@ import ru.lct2026.finedu.productcore.domain.repository.GameRepository
 import ru.lct2026.finedu.productcore.navigation.api.FinEduRoute
 import ru.lct2026.finedu.productcore.ui.viewmodel.StatefulViewModel
 
-@HiltViewModel
-internal class QuestsViewModel @Inject constructor(
+internal class QuestsViewModel(
     private val gameRepository: GameRepository,
     private val contentRepository: ContentRepository
 ) : StatefulViewModel<QuestsUiState>(QuestsUiState.Loading) {

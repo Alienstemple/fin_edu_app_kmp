@@ -34,7 +34,6 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import ru.lct2026.finedu.productcore.domain.model.GlossaryTerm
 import ru.lct2026.finedu.productcore.domain.model.PetFur
@@ -54,11 +53,7 @@ import ru.lct2026.finedu.productcore.ui.preview.FinEduPreview
 import ru.lct2026.finedu.productcore.ui.theme.FinEduTheme
 
 @Composable
-internal fun GlossaryRoute(
-    onBack: () -> Unit,
-    onNavigate: (FinEduRoute) -> Unit,
-    viewModel: GlossaryViewModel = hiltViewModel()
-) {
+internal fun GlossaryRoute(onBack: () -> Unit, onNavigate: (FinEduRoute) -> Unit, viewModel: GlossaryViewModel) {
     val state by viewModel.stateFlow.collectAsStateWithLifecycle()
     GlossaryScreen(state = state, onBack = onBack, onNavigate = onNavigate)
 }

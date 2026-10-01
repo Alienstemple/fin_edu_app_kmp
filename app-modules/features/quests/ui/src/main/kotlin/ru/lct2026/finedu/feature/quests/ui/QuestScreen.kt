@@ -16,7 +16,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import ru.lct2026.finedu.feature.quests.ui.component.ChoiceQuest
 import ru.lct2026.finedu.feature.quests.ui.component.ScamQuest
@@ -26,14 +25,7 @@ import ru.lct2026.finedu.productcore.ui.event.ObserveEvents
 import ru.lct2026.finedu.productcore.ui.preview.FinEduPreview
 
 @Composable
-internal fun QuestRoute(
-    questId: String,
-    onBack: () -> Unit,
-    viewModel: QuestViewModel = hiltViewModel<QuestViewModel, QuestViewModel.Factory>(
-        key = questId,
-        creationCallback = { factory -> factory.create(questId) }
-    )
-) {
+internal fun QuestRoute(onBack: () -> Unit, viewModel: QuestViewModel) {
     val state by viewModel.stateFlow.collectAsStateWithLifecycle()
     ObserveEvents(viewModel.events) { event ->
         when (event) {

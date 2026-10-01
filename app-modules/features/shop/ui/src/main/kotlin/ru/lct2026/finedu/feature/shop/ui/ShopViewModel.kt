@@ -1,8 +1,6 @@
 package ru.lct2026.finedu.feature.shop.ui
 
 import androidx.lifecycle.viewModelScope
-import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -17,8 +15,7 @@ import ru.lct2026.finedu.productcore.domain.repository.ContentRepository
 import ru.lct2026.finedu.productcore.domain.repository.GameRepository
 import ru.lct2026.finedu.productcore.ui.viewmodel.StatefulViewModel
 
-@HiltViewModel
-internal class ShopViewModel @Inject constructor(
+internal class ShopViewModel(
     private val gameRepository: GameRepository,
     private val contentRepository: ContentRepository
 ) : StatefulViewModel<ShopUiState>(ShopUiState()) {

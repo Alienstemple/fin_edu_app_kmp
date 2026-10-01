@@ -2,7 +2,7 @@ import java.util.Properties
 
 plugins {
     alias(libs.plugins.convention.android.application)
-    alias(libs.plugins.convention.hilt)
+    alias(libs.plugins.convention.kotlin.inject)
 }
 
 // Параметры подписи релиза лежат вне git: скопируйте keystore.properties.example в keystore.properties.
