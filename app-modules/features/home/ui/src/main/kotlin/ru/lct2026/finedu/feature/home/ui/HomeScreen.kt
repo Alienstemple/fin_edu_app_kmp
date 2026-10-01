@@ -26,6 +26,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import org.jetbrains.compose.resources.painterResource
 import ru.lct2026.finedu.feature.home.ui.component.BubbleField
 import ru.lct2026.finedu.feature.home.ui.component.CollapsedBubble
 import ru.lct2026.finedu.feature.home.ui.component.ExpandedBubble

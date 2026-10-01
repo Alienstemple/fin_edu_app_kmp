@@ -28,11 +28,12 @@ import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import org.jetbrains.compose.resources.stringResource
 import ru.lct2026.finedu.feature.hero.ui.component.LookPicker
 import ru.lct2026.finedu.productcore.domain.model.PetFur
 import ru.lct2026.finedu.productcore.domain.model.PetHat
 import ru.lct2026.finedu.productcore.domain.model.PetStage
-import ru.lct2026.finedu.productcore.ui.R as CoreR
+import ru.lct2026.finedu.productcore.ui.Res as CoreRes
 import ru.lct2026.finedu.productcore.ui.components.FinButton
 import ru.lct2026.finedu.productcore.ui.components.FinButtonStyle
 import ru.lct2026.finedu.productcore.ui.components.FinTopBar
@@ -40,6 +41,7 @@ import ru.lct2026.finedu.productcore.ui.components.glass
 import ru.lct2026.finedu.productcore.ui.event.ObserveEvents
 import ru.lct2026.finedu.productcore.ui.illustration.PetMood
 import ru.lct2026.finedu.productcore.ui.illustration.PetView
+import ru.lct2026.finedu.productcore.ui.pet_a11y
 import ru.lct2026.finedu.productcore.ui.preview.FinEduPreview
 import ru.lct2026.finedu.productcore.ui.theme.FinEduTheme
 
@@ -140,7 +142,7 @@ private fun PetPreview(state: HeroUiState, name: String) {
             modifier = Modifier.width(PreviewPetWidth),
             mood = PetMood.HAPPY,
             stage = PetStage.BABY,
-            contentDescription = stringResource(CoreR.string.pet_a11y, name)
+            contentDescription = stringResource(CoreRes.string.pet_a11y, name)
         )
         Text(text = name, style = MaterialTheme.typography.titleLarge)
     }

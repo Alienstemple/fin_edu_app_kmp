@@ -22,13 +22,15 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import org.jetbrains.compose.resources.painterResource
 import ru.lct2026.finedu.feature.parent.ui.R
 import ru.lct2026.finedu.productcore.domain.model.Article
-import ru.lct2026.finedu.productcore.ui.R as CoreR
+import ru.lct2026.finedu.productcore.ui.Res as CoreRes
 import ru.lct2026.finedu.productcore.ui.components.FinButton
 import ru.lct2026.finedu.productcore.ui.components.FinButtonStyle
 import ru.lct2026.finedu.productcore.ui.components.GlassStyle
 import ru.lct2026.finedu.productcore.ui.components.glass
+import ru.lct2026.finedu.productcore.ui.ic_chevron_right
 import ru.lct2026.finedu.productcore.ui.preview.FinEduPreview
 import ru.lct2026.finedu.productcore.ui.theme.FinEduTheme
 
@@ -66,7 +68,7 @@ private fun ArticleRow(article: Article, onClick: () -> Unit) {
             SecondaryText(pluralStringResource(R.plurals.parent_articles_minutes, article.minutes, article.minutes))
         }
         if (isReady) {
-            Icon(painter = painterResource(CoreR.drawable.ic_chevron_right), contentDescription = null)
+            Icon(painter = painterResource(CoreRes.drawable.ic_chevron_right), contentDescription = null)
         } else {
             Text(
                 text = stringResource(R.string.parent_articles_soon),

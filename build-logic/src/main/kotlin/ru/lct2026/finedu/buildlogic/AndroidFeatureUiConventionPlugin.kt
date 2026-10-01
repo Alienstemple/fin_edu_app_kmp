@@ -25,6 +25,8 @@ class AndroidFeatureUiConventionPlugin : Plugin<Project> {
             add("implementation", project(":app-modules:product-core:domain"))
             add("implementation", libs.lib("androidx-lifecycle-runtime-compose"))
             add("implementation", libs.lib("androidx-lifecycle-viewmodel-compose"))
+            // Ресурсы product-core:ui (Compose Multiplatform `Res`) до перевода фичи на CMP.
+            add("implementation", libs.lib("cmp-components-resources"))
             add("testImplementation", libs.lib("test-robolectric"))
         }
         addUnitTestDependencies()

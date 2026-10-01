@@ -35,18 +35,20 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import org.jetbrains.compose.resources.painterResource
 import ru.lct2026.finedu.productcore.domain.model.GlossaryTerm
 import ru.lct2026.finedu.productcore.domain.model.PetFur
 import ru.lct2026.finedu.productcore.domain.model.PetHat
 import ru.lct2026.finedu.productcore.domain.model.PetLook
 import ru.lct2026.finedu.productcore.navigation.api.FinEduRoute
-import ru.lct2026.finedu.productcore.ui.R as CoreR
+import ru.lct2026.finedu.productcore.ui.Res as CoreRes
 import ru.lct2026.finedu.productcore.ui.components.FinButton
 import ru.lct2026.finedu.productcore.ui.components.FinButtonStyle
 import ru.lct2026.finedu.productcore.ui.components.FinTopBar
 import ru.lct2026.finedu.productcore.ui.components.GlassStyle
 import ru.lct2026.finedu.productcore.ui.components.MinTouchTarget
 import ru.lct2026.finedu.productcore.ui.components.glass
+import ru.lct2026.finedu.productcore.ui.ic_chevron_right
 import ru.lct2026.finedu.productcore.ui.illustration.PetMood
 import ru.lct2026.finedu.productcore.ui.illustration.PetView
 import ru.lct2026.finedu.productcore.ui.preview.FinEduPreview
@@ -184,7 +186,7 @@ private fun GlossaryFooter(onShortsClick: () -> Unit, onOnboardingClick: () -> U
                 style = MaterialTheme.typography.titleSmall,
                 modifier = Modifier.weight(1f)
             )
-            Icon(painter = painterResource(CoreR.drawable.ic_chevron_right), contentDescription = null)
+            Icon(painter = painterResource(CoreRes.drawable.ic_chevron_right), contentDescription = null)
         }
         FinButton(
             text = stringResource(R.string.glossary_onboarding_again),

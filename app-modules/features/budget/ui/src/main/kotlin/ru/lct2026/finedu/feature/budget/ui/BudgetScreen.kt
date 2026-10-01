@@ -24,6 +24,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import org.jetbrains.compose.resources.stringResource
 import ru.lct2026.finedu.feature.budget.ui.component.DistributionBar
 import ru.lct2026.finedu.feature.budget.ui.component.PlanFactBar
 import ru.lct2026.finedu.productcore.domain.model.Bag

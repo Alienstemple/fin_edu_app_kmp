@@ -28,14 +28,16 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import org.jetbrains.compose.resources.painterResource
 import ru.lct2026.finedu.feature.hero.ui.R
 import ru.lct2026.finedu.productcore.domain.model.PetFur
 import ru.lct2026.finedu.productcore.domain.model.PetHat
 import ru.lct2026.finedu.productcore.domain.model.PetLook
 import ru.lct2026.finedu.productcore.domain.model.PetStage
-import ru.lct2026.finedu.productcore.ui.R as CoreR
+import ru.lct2026.finedu.productcore.ui.Res as CoreRes
 import ru.lct2026.finedu.productcore.ui.components.MinTouchTarget
 import ru.lct2026.finedu.productcore.ui.components.glass
+import ru.lct2026.finedu.productcore.ui.ic_check
 import ru.lct2026.finedu.productcore.ui.illustration.PetView
 import ru.lct2026.finedu.productcore.ui.theme.FinEduTheme
 
@@ -124,7 +126,7 @@ private fun OptionTile(
         }
         if (isSelected) {
             Icon(
-                painter = painterResource(CoreR.drawable.ic_check),
+                painter = painterResource(CoreRes.drawable.ic_check),
                 contentDescription = null,
                 tint = selection,
                 modifier = Modifier

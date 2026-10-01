@@ -1,6 +1,5 @@
 package ru.lct2026.finedu.feature.home.ui.component
 
-import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -34,6 +33,9 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import ru.lct2026.finedu.feature.home.ui.HomeBubble
 import ru.lct2026.finedu.feature.home.ui.HomeGoal
 import ru.lct2026.finedu.feature.home.ui.HomeNotice
@@ -44,7 +46,7 @@ import ru.lct2026.finedu.productcore.domain.model.Dzynki
 import ru.lct2026.finedu.productcore.domain.model.GameRules
 import ru.lct2026.finedu.productcore.domain.model.PetStat
 import ru.lct2026.finedu.productcore.navigation.api.FinEduRoute
-import ru.lct2026.finedu.productcore.ui.R as CoreR
+import ru.lct2026.finedu.productcore.ui.Res as CoreRes
 import ru.lct2026.finedu.productcore.ui.components.BagChip
 import ru.lct2026.finedu.productcore.ui.components.DzynkiAmount
 import ru.lct2026.finedu.productcore.ui.components.FinButton
@@ -55,6 +57,13 @@ import ru.lct2026.finedu.productcore.ui.components.color
 import ru.lct2026.finedu.productcore.ui.components.dzynkiText
 import ru.lct2026.finedu.productcore.ui.components.iconRes
 import ru.lct2026.finedu.productcore.ui.components.labelRes
+import ru.lct2026.finedu.productcore.ui.ic_check
+import ru.lct2026.finedu.productcore.ui.ic_coin
+import ru.lct2026.finedu.productcore.ui.ic_goal
+import ru.lct2026.finedu.productcore.ui.ic_nav_quests
+import ru.lct2026.finedu.productcore.ui.ic_nav_results
+import ru.lct2026.finedu.productcore.ui.stat_tired_a11y
+import ru.lct2026.finedu.productcore.ui.stat_value_a11y
 import ru.lct2026.finedu.productcore.ui.theme.FinEduTheme
 
 /**
@@ -95,9 +104,9 @@ internal fun CollapsedBubble(bubble: HomeBubble, state: HomeUiState.Content) {
             val value = state.pet[stat]
             val label = stringResource(stat.labelRes)
             val description = if (value <= GameRules.TIRED_THRESHOLD) {
-                stringResource(CoreR.string.stat_tired_a11y, label)
+                stringResource(CoreRes.string.stat_tired_a11y, label)
             } else {
-                stringResource(CoreR.string.stat_value_a11y, label, value)
+                stringResource(CoreRes.string.stat_value_a11y, label, value)
             }
             RingBubble(
                 description = description,
@@ -117,7 +126,7 @@ internal fun CollapsedBubble(bubble: HomeBubble, state: HomeUiState.Content) {
             }
             CenteredContent(description) {
                 Image(
-                    painter = painterResource(CoreR.drawable.ic_coin),
+                    painter = painterResource(CoreRes.drawable.ic_coin),
                     contentDescription = null,
                     modifier = Modifier.size(26.dp)
                 )
@@ -129,7 +138,7 @@ internal fun CollapsedBubble(bubble: HomeBubble, state: HomeUiState.Content) {
             val goal = state.goal
             RingBubble(
                 description = goal?.let { goalText(it, state.isYounger) } ?: stringResource(R.string.home_goals_done),
-                iconRes = if (goal == null) CoreR.drawable.ic_check else CoreR.drawable.ic_goal,
+                iconRes = if (goal == null) CoreRes.drawable.ic_check else CoreRes.drawable.ic_goal,
                 tint = FinEduTheme.colors.savings,
                 progress = goal?.progress ?: 1f,
                 text = null
@@ -140,11 +149,11 @@ internal fun CollapsedBubble(bubble: HomeBubble, state: HomeUiState.Content) {
             description = state.quest?.let { stringResource(R.string.home_quest, it.title) }
                 ?: stringResource(R.string.home_quests_done)
         ) {
-            BubbleIcon(CoreR.drawable.ic_nav_quests, FinEduTheme.colors.gold)
+            BubbleIcon(CoreRes.drawable.ic_nav_quests, FinEduTheme.colors.gold)
         }
 
         HomeBubble.FinishWeek -> CenteredContent(description = stringResource(R.string.home_finish_week)) {
-            BubbleIcon(CoreR.drawable.ic_nav_results, MaterialTheme.colorScheme.onSurface)
+            BubbleIcon(CoreRes.drawable.ic_nav_results, MaterialTheme.colorScheme.onSurface)
         }
     }
 }
@@ -162,7 +171,7 @@ private fun CenteredContent(description: String, content: @Composable ColumnScop
 }
 
 @Composable
-private fun RingBubble(description: String, @DrawableRes iconRes: Int, tint: Color, progress: Float, text: String?) {
+private fun RingBubble(description: String, iconRes: DrawableResource, tint: Color, progress: Float, text: String?) {
     val track = FinEduTheme.colors.glassBorder
     Box(contentAlignment = Alignment.Center) {
         Canvas(
@@ -182,7 +191,7 @@ private fun RingBubble(description: String, @DrawableRes iconRes: Int, tint: Col
 }
 
 @Composable
-private fun BubbleIcon(@DrawableRes iconRes: Int, tint: Color) {
+private fun BubbleIcon(iconRes: DrawableResource, tint: Color) {
     Icon(painter = painterResource(iconRes), contentDescription = null, tint = tint, modifier = Modifier.size(24.dp))
 }
 

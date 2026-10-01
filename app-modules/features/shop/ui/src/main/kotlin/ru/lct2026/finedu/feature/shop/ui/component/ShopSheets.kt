@@ -33,6 +33,8 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import ru.lct2026.finedu.feature.shop.ui.R
 import ru.lct2026.finedu.feature.shop.ui.ShopSheet
 import ru.lct2026.finedu.productcore.domain.model.Bag

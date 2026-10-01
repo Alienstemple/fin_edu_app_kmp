@@ -12,11 +12,21 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
-import ru.lct2026.finedu.productcore.ui.R
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
+import ru.lct2026.finedu.productcore.ui.Res
+import ru.lct2026.finedu.productcore.ui.ic_bag_savings
+import ru.lct2026.finedu.productcore.ui.ic_nav_home
+import ru.lct2026.finedu.productcore.ui.ic_nav_quests
+import ru.lct2026.finedu.productcore.ui.ic_nav_shop
+import ru.lct2026.finedu.productcore.ui.nav_home
+import ru.lct2026.finedu.productcore.ui.nav_quests
+import ru.lct2026.finedu.productcore.ui.nav_savings
+import ru.lct2026.finedu.productcore.ui.nav_shop
 import ru.lct2026.finedu.productcore.ui.preview.FinEduPreview
 import ru.lct2026.finedu.productcore.ui.sound.LocalSoundPlayer
 import ru.lct2026.finedu.productcore.ui.sound.SoundEffect
@@ -66,20 +76,20 @@ fun FinBottomBar(selected: FinTab, onSelect: (FinTab) -> Unit, modifier: Modifie
 
 private val MIN_LABEL_SIZE = 11.sp
 
-private val FinTab.labelRes: Int
+private val FinTab.labelRes: StringResource
     get() = when (this) {
-        FinTab.HOME -> R.string.nav_home
-        FinTab.QUESTS -> R.string.nav_quests
-        FinTab.SHOP -> R.string.nav_shop
-        FinTab.SAVINGS -> R.string.nav_savings
+        FinTab.HOME -> Res.string.nav_home
+        FinTab.QUESTS -> Res.string.nav_quests
+        FinTab.SHOP -> Res.string.nav_shop
+        FinTab.SAVINGS -> Res.string.nav_savings
     }
 
-private val FinTab.iconRes: Int
+private val FinTab.iconRes: DrawableResource
     get() = when (this) {
-        FinTab.HOME -> R.drawable.ic_nav_home
-        FinTab.QUESTS -> R.drawable.ic_nav_quests
-        FinTab.SHOP -> R.drawable.ic_nav_shop
-        FinTab.SAVINGS -> R.drawable.ic_bag_savings
+        FinTab.HOME -> Res.drawable.ic_nav_home
+        FinTab.QUESTS -> Res.drawable.ic_nav_quests
+        FinTab.SHOP -> Res.drawable.ic_nav_shop
+        FinTab.SAVINGS -> Res.drawable.ic_bag_savings
     }
 
 @Preview

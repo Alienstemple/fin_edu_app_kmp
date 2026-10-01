@@ -25,7 +25,6 @@ import androidx.compose.ui.graphics.drawscope.clipPath
 import androidx.compose.ui.graphics.drawscope.rotate
 import androidx.compose.ui.graphics.drawscope.withTransform
 import androidx.compose.ui.graphics.vector.PathParser
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextMeasurer
@@ -40,12 +39,15 @@ import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.max
 import kotlin.math.sin
+import org.jetbrains.compose.resources.stringResource
 import ru.lct2026.finedu.productcore.domain.model.PetFur
 import ru.lct2026.finedu.productcore.domain.model.PetHat
 import ru.lct2026.finedu.productcore.domain.model.PetLook
 import ru.lct2026.finedu.productcore.domain.model.PetStage
-import ru.lct2026.finedu.productcore.ui.R
+import ru.lct2026.finedu.productcore.ui.Res
 import ru.lct2026.finedu.productcore.ui.preview.FinEduPreview
+import ru.lct2026.finedu.productcore.ui.room_a11y
+import ru.lct2026.finedu.productcore.ui.room_box_label
 import ru.lct2026.finedu.productcore.ui.theme.RoomBaseboard
 import ru.lct2026.finedu.productcore.ui.theme.RoomBoxDark
 import ru.lct2026.finedu.productcore.ui.theme.RoomBoxLight
@@ -85,8 +87,8 @@ fun RoomScene(
 ) {
     val paths = remember { RoomPaths() }
     val measurer = rememberTextMeasurer()
-    val boxLabel = stringResource(R.string.room_box_label)
-    val description = stringResource(R.string.room_a11y)
+    val boxLabel = stringResource(Res.string.room_box_label)
+    val description = stringResource(Res.string.room_a11y)
     BoxWithConstraints(
         modifier = modifier
             .clipToBounds()

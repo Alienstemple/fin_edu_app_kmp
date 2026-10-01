@@ -36,6 +36,8 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import ru.lct2026.finedu.feature.savings.ui.component.AmountSheet
 import ru.lct2026.finedu.feature.savings.ui.component.GoalRitualScreen
 import ru.lct2026.finedu.productcore.domain.model.Bag
@@ -46,7 +48,7 @@ import ru.lct2026.finedu.productcore.domain.model.PetFur
 import ru.lct2026.finedu.productcore.domain.model.PetHat
 import ru.lct2026.finedu.productcore.domain.model.PetLook
 import ru.lct2026.finedu.productcore.domain.model.PetStage
-import ru.lct2026.finedu.productcore.ui.R as CoreR
+import ru.lct2026.finedu.productcore.ui.Res as CoreRes
 import ru.lct2026.finedu.productcore.ui.components.BagIcon
 import ru.lct2026.finedu.productcore.ui.components.DzynkiAmount
 import ru.lct2026.finedu.productcore.ui.components.FeedbackSheet
@@ -59,6 +61,10 @@ import ru.lct2026.finedu.productcore.ui.components.MinTouchTarget
 import ru.lct2026.finedu.productcore.ui.components.SpeechBubble
 import ru.lct2026.finedu.productcore.ui.components.glass
 import ru.lct2026.finedu.productcore.ui.event.ObserveEvents
+import ru.lct2026.finedu.productcore.ui.feedback_why_deposit
+import ru.lct2026.finedu.productcore.ui.ic_check
+import ru.lct2026.finedu.productcore.ui.ic_clock
+import ru.lct2026.finedu.productcore.ui.ic_goal
 import ru.lct2026.finedu.productcore.ui.illustration.PetMood
 import ru.lct2026.finedu.productcore.ui.illustration.PetView
 import ru.lct2026.finedu.productcore.ui.preview.FinEduPreview
@@ -314,7 +320,7 @@ private fun GoalProgressBlock(progress: GoalProgress, savings: Dzynki, onPlaceGo
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Icon(
-                painter = painterResource(CoreR.drawable.ic_clock),
+                painter = painterResource(CoreRes.drawable.ic_clock),
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -411,7 +417,7 @@ private fun GoalRow(item: GoalItem) {
     ) {
         val placed = item.status == GoalStatus.PLACED
         Icon(
-            painter = painterResource(if (placed) CoreR.drawable.ic_check else CoreR.drawable.ic_goal),
+            painter = painterResource(if (placed) CoreRes.drawable.ic_check else CoreRes.drawable.ic_goal),
             contentDescription = null,
             tint = if (placed) FinEduTheme.colors.savings else MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.size(24.dp)
@@ -482,7 +488,7 @@ private fun feedbackWhy(feedback: SavingsFeedback): String {
         FeedbackReason.BOUGHT_NEED,
         FeedbackReason.BOUGHT_WANT,
         FeedbackReason.PAUSED,
-        FeedbackReason.GOAL_PLACED -> goalLine ?: stringResource(CoreR.string.feedback_why_deposit)
+        FeedbackReason.GOAL_PLACED -> goalLine ?: stringResource(CoreRes.string.feedback_why_deposit)
     }
 }
 

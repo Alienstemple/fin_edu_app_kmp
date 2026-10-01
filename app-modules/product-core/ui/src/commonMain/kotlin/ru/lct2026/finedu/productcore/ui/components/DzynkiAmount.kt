@@ -11,15 +11,16 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import org.jetbrains.compose.resources.painterResource
 import ru.lct2026.finedu.productcore.domain.model.Dzynki
-import ru.lct2026.finedu.productcore.ui.R
+import ru.lct2026.finedu.productcore.ui.Res
+import ru.lct2026.finedu.productcore.ui.ic_coin
 import ru.lct2026.finedu.productcore.ui.preview.FinEduPreview
 
 /** Сумма с монеткой. Для TalkBack читается словами: «120 дзынек». */
@@ -37,7 +38,7 @@ fun DzynkiAmount(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Image(
-            painter = painterResource(R.drawable.ic_coin),
+            painter = painterResource(Res.drawable.ic_coin),
             contentDescription = null,
             modifier = Modifier.size(coinSize)
         )

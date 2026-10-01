@@ -18,6 +18,7 @@ import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import org.jetbrains.compose.resources.painterResource
 import ru.lct2026.finedu.feature.quests.ui.QuestUiState
 import ru.lct2026.finedu.feature.quests.ui.R
 import ru.lct2026.finedu.feature.quests.ui.ScamAnswer
@@ -32,11 +33,12 @@ import ru.lct2026.finedu.productcore.domain.model.QuestLevel
 import ru.lct2026.finedu.productcore.domain.model.QuestTheme
 import ru.lct2026.finedu.productcore.domain.model.ScamMessage
 import ru.lct2026.finedu.productcore.domain.model.ScamSign
-import ru.lct2026.finedu.productcore.ui.R as CoreR
+import ru.lct2026.finedu.productcore.ui.Res as CoreRes
 import ru.lct2026.finedu.productcore.ui.components.FinButton
 import ru.lct2026.finedu.productcore.ui.components.GlassStyle
 import ru.lct2026.finedu.productcore.ui.components.dzynkiText
 import ru.lct2026.finedu.productcore.ui.components.glass
+import ru.lct2026.finedu.productcore.ui.ic_check
 import ru.lct2026.finedu.productcore.ui.illustration.PetMood
 import ru.lct2026.finedu.productcore.ui.preview.FinEduPreview
 import ru.lct2026.finedu.productcore.ui.sound.PlaySoundOnce
@@ -186,7 +188,7 @@ private fun SummaryStep(state: QuestUiState.Scam, reward: Dzynki, onFinishClick:
         state.quest.rules.forEach { rule ->
             Row(horizontalArrangement = Arrangement.spacedBy(10.dp), verticalAlignment = Alignment.CenterVertically) {
                 Icon(
-                    painter = painterResource(CoreR.drawable.ic_check),
+                    painter = painterResource(CoreRes.drawable.ic_check),
                     contentDescription = null,
                     tint = FinEduTheme.colors.gold,
                     modifier = Modifier.size(24.dp)

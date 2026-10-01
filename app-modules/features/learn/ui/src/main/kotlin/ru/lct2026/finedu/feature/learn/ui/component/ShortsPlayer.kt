@@ -31,15 +31,17 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
+import org.jetbrains.compose.resources.painterResource
 import ru.lct2026.finedu.feature.learn.ui.R
 import ru.lct2026.finedu.feature.learn.ui.ShortsActions
 import ru.lct2026.finedu.feature.learn.ui.ShortsUiState
-import ru.lct2026.finedu.productcore.ui.R as CoreR
+import ru.lct2026.finedu.productcore.ui.Res as CoreRes
 import ru.lct2026.finedu.productcore.ui.components.FinButton
 import ru.lct2026.finedu.productcore.ui.components.FinButtonStyle
 import ru.lct2026.finedu.productcore.ui.components.GlassStyle
 import ru.lct2026.finedu.productcore.ui.components.MinTouchTarget
 import ru.lct2026.finedu.productcore.ui.components.glass
+import ru.lct2026.finedu.productcore.ui.ic_check
 import ru.lct2026.finedu.productcore.ui.illustration.PetMood
 import ru.lct2026.finedu.productcore.ui.illustration.PetView
 import ru.lct2026.finedu.productcore.ui.theme.FinEduTheme
@@ -188,7 +190,7 @@ private fun ToggleChip(text: String, selected: Boolean, onClick: () -> Unit) {
         leadingIcon = if (selected) {
             {
                 Icon(
-                    painter = painterResource(CoreR.drawable.ic_check),
+                    painter = painterResource(CoreRes.drawable.ic_check),
                     contentDescription = null,
                     modifier = Modifier.size(18.dp)
                 )

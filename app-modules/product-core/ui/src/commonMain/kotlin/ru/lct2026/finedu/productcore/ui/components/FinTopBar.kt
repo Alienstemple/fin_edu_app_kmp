@@ -21,17 +21,27 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import ru.lct2026.finedu.productcore.ui.R
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
+import ru.lct2026.finedu.productcore.ui.Res
+import ru.lct2026.finedu.productcore.ui.ic_back
+import ru.lct2026.finedu.productcore.ui.ic_help
+import ru.lct2026.finedu.productcore.ui.ic_lock
+import ru.lct2026.finedu.productcore.ui.ic_sound_off
+import ru.lct2026.finedu.productcore.ui.ic_sound_on
 import ru.lct2026.finedu.productcore.ui.preview.FinEduPreview
 import ru.lct2026.finedu.productcore.ui.sound.LocalSoundControls
 import ru.lct2026.finedu.productcore.ui.sound.LocalSoundPlayer
 import ru.lct2026.finedu.productcore.ui.sound.SoundEffect
+import ru.lct2026.finedu.productcore.ui.top_bar_back
+import ru.lct2026.finedu.productcore.ui.top_bar_help
+import ru.lct2026.finedu.productcore.ui.top_bar_parent
+import ru.lct2026.finedu.productcore.ui.top_bar_sound
 
 /**
  * Шапка экрана: «назад» (если [onBack] не `null`), заголовок, динамик → шторка «Звук», «?» → «Полезное» и замок →
@@ -56,7 +66,7 @@ fun FinTopBar(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(4.dp)
     ) {
-        onBack?.let { TopBarButton(R.drawable.ic_back, stringResource(R.string.top_bar_back), it) }
+        onBack?.let { TopBarButton(Res.drawable.ic_back, stringResource(Res.string.top_bar_back), it) }
         Column(
             modifier = Modifier
                 .weight(1f)
@@ -78,19 +88,19 @@ fun FinTopBar(
         LocalSoundControls.current?.let { controls ->
             var isSoundOpen by rememberSaveable { mutableStateOf(false) }
             TopBarButton(
-                iconRes = if (controls.volume == 0) R.drawable.ic_sound_off else R.drawable.ic_sound_on,
-                description = stringResource(R.string.top_bar_sound),
+                iconRes = if (controls.volume == 0) Res.drawable.ic_sound_off else Res.drawable.ic_sound_on,
+                description = stringResource(Res.string.top_bar_sound),
                 onClick = { isSoundOpen = true }
             )
             if (isSoundOpen) SoundSheet(controls = controls, onDismiss = { isSoundOpen = false })
         }
-        onHelp?.let { TopBarButton(R.drawable.ic_help, stringResource(R.string.top_bar_help), it) }
-        onParent?.let { TopBarButton(R.drawable.ic_lock, stringResource(R.string.top_bar_parent), it) }
+        onHelp?.let { TopBarButton(Res.drawable.ic_help, stringResource(Res.string.top_bar_help), it) }
+        onParent?.let { TopBarButton(Res.drawable.ic_lock, stringResource(Res.string.top_bar_parent), it) }
     }
 }
 
 @Composable
-private fun TopBarButton(iconRes: Int, description: String, onClick: () -> Unit) {
+private fun TopBarButton(iconRes: DrawableResource, description: String, onClick: () -> Unit) {
     val sound = LocalSoundPlayer.current
     IconButton(
         onClick = {

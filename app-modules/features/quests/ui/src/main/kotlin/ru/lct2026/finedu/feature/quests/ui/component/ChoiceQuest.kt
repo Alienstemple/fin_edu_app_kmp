@@ -21,6 +21,7 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import org.jetbrains.compose.resources.painterResource
 import ru.lct2026.finedu.feature.quests.ui.ChoiceResult
 import ru.lct2026.finedu.feature.quests.ui.QuestUiState
 import ru.lct2026.finedu.feature.quests.ui.R
@@ -33,11 +34,14 @@ import ru.lct2026.finedu.productcore.domain.model.Quest
 import ru.lct2026.finedu.productcore.domain.model.QuestLevel
 import ru.lct2026.finedu.productcore.domain.model.QuestOption
 import ru.lct2026.finedu.productcore.domain.model.QuestTheme
-import ru.lct2026.finedu.productcore.ui.R as CoreR
+import ru.lct2026.finedu.productcore.ui.Res as CoreRes
 import ru.lct2026.finedu.productcore.ui.components.FinButton
 import ru.lct2026.finedu.productcore.ui.components.GlassStyle
 import ru.lct2026.finedu.productcore.ui.components.MinTouchTarget
 import ru.lct2026.finedu.productcore.ui.components.glass
+import ru.lct2026.finedu.productcore.ui.ic_alert
+import ru.lct2026.finedu.productcore.ui.ic_chevron_right
+import ru.lct2026.finedu.productcore.ui.ic_clock
 import ru.lct2026.finedu.productcore.ui.illustration.PetMood
 import ru.lct2026.finedu.productcore.ui.illustration.PetView
 import ru.lct2026.finedu.productcore.ui.preview.FinEduPreview
@@ -100,7 +104,7 @@ private fun AdMeme() {
             )
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
                 Icon(
-                    painter = painterResource(CoreR.drawable.ic_clock),
+                    painter = painterResource(CoreRes.drawable.ic_clock),
                     contentDescription = null,
                     modifier = Modifier.size(24.dp)
                 )
@@ -164,7 +168,7 @@ private fun OptionCard(text: String, onClick: () -> Unit) {
     ) {
         Text(text = text, style = MaterialTheme.typography.titleMedium, modifier = Modifier.weight(1f))
         Icon(
-            painter = painterResource(CoreR.drawable.ic_chevron_right),
+            painter = painterResource(CoreRes.drawable.ic_chevron_right),
             contentDescription = null,
             modifier = Modifier.size(20.dp)
         )
@@ -194,7 +198,7 @@ private fun Review(state: QuestUiState.Choice, result: ChoiceResult, onDoneClick
 private fun AdNote(text: String) {
     Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
         Icon(
-            painter = painterResource(CoreR.drawable.ic_alert),
+            painter = painterResource(CoreRes.drawable.ic_alert),
             contentDescription = null,
             tint = FinEduTheme.colors.gold,
             modifier = Modifier.size(20.dp)

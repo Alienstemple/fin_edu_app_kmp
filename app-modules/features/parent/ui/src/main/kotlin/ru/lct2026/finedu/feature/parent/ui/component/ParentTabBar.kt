@@ -10,14 +10,17 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import org.jetbrains.compose.resources.painterResource
 import ru.lct2026.finedu.feature.parent.ui.ParentTab
 import ru.lct2026.finedu.feature.parent.ui.R
-import ru.lct2026.finedu.productcore.ui.R as CoreR
+import ru.lct2026.finedu.productcore.ui.Res as CoreRes
 import ru.lct2026.finedu.productcore.ui.components.GlassStyle
 import ru.lct2026.finedu.productcore.ui.components.glass
+import ru.lct2026.finedu.productcore.ui.ic_nav_progress
 import ru.lct2026.finedu.productcore.ui.preview.FinEduPreview
 import ru.lct2026.finedu.productcore.ui.theme.FinEduTheme
 
@@ -33,7 +36,7 @@ internal fun ParentTabBar(selected: ParentTab, onSelect: (ParentTab) -> Unit, mo
             NavigationBarItem(
                 selected = tab == selected,
                 onClick = { onSelect(tab) },
-                icon = { Icon(painter = painterResource(tab.iconRes), contentDescription = null) },
+                icon = { Icon(painter = tab.icon, contentDescription = null) },
                 label = { Text(text = stringResource(tab.labelRes), style = MaterialTheme.typography.labelMedium) },
                 colors = NavigationBarItemDefaults.colors(
                     selectedIconColor = FinEduTheme.colors.onGold,
@@ -55,12 +58,14 @@ internal val ParentTab.labelRes: Int
         ParentTab.SETTINGS -> R.string.parent_tab_settings
     }
 
-private val ParentTab.iconRes: Int
+// Иконки из двух систем ресурсов (CMP `CoreRes` и Android `R`) — до перевода фичи на Compose Multiplatform.
+private val ParentTab.icon: Painter
+    @Composable
     get() = when (this) {
-        ParentTab.PROGRESS -> CoreR.drawable.ic_nav_progress
-        ParentTab.ARTICLES -> R.drawable.ic_parent_book
-        ParentTab.SCAMS -> R.drawable.ic_parent_shield
-        ParentTab.SETTINGS -> R.drawable.ic_parent_gear
+        ParentTab.PROGRESS -> painterResource(CoreRes.drawable.ic_nav_progress)
+        ParentTab.ARTICLES -> painterResource(R.drawable.ic_parent_book)
+        ParentTab.SCAMS -> painterResource(R.drawable.ic_parent_shield)
+        ParentTab.SETTINGS -> painterResource(R.drawable.ic_parent_gear)
     }
 
 @Preview

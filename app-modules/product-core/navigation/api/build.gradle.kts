@@ -1,13 +1,13 @@
 plugins {
-    alias(libs.plugins.convention.android.feature.api)
+    alias(libs.plugins.convention.kmp.library)
     alias(libs.plugins.kotlin.serialization)
 }
 
-android {
-    namespace = "ru.lct2026.finedu.productcore.navigation.api"
-}
-
-dependencies {
-    api(libs.androidx.navigation.compose)
-    implementation(libs.kotlinx.serialization.json)
+kotlin {
+    sourceSets {
+        commonMain.dependencies {
+            api(libs.jetbrains.navigation.compose)
+            implementation(libs.kotlinx.serialization.json)
+        }
+    }
 }

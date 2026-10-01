@@ -16,12 +16,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
+import org.jetbrains.compose.resources.painterResource
 import ru.lct2026.finedu.feature.quests.ui.R
 import ru.lct2026.finedu.productcore.domain.model.Dzynki
-import ru.lct2026.finedu.productcore.ui.R as CoreR
+import ru.lct2026.finedu.productcore.ui.Res as CoreRes
 import ru.lct2026.finedu.productcore.ui.components.GlassStyle
 import ru.lct2026.finedu.productcore.ui.components.dzynkiText
 import ru.lct2026.finedu.productcore.ui.components.glass
+import ru.lct2026.finedu.productcore.ui.ic_coin
 
 /** Заголовок блока внутри задания. */
 @Composable
@@ -58,7 +60,7 @@ internal fun RewardNote(text: String, modifier: Modifier = Modifier) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         Image(
-            painter = painterResource(CoreR.drawable.ic_coin),
+            painter = painterResource(CoreRes.drawable.ic_coin),
             contentDescription = null,
             modifier = Modifier.size(28.dp)
         )

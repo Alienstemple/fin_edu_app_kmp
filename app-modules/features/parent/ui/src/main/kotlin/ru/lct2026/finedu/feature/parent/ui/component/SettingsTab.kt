@@ -26,22 +26,26 @@ import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import ru.lct2026.finedu.feature.parent.ui.BonusReason
 import ru.lct2026.finedu.feature.parent.ui.BonusUiState
 import ru.lct2026.finedu.feature.parent.ui.R
 import ru.lct2026.finedu.productcore.domain.model.AgeMode
 import ru.lct2026.finedu.productcore.domain.model.Dzynki
 import ru.lct2026.finedu.productcore.domain.model.Settings
-import ru.lct2026.finedu.productcore.ui.R as CoreR
+import ru.lct2026.finedu.productcore.ui.Res as CoreRes
 import ru.lct2026.finedu.productcore.ui.components.AmountStepper
 import ru.lct2026.finedu.productcore.ui.components.FinButton
 import ru.lct2026.finedu.productcore.ui.components.FinButtonStyle
 import ru.lct2026.finedu.productcore.ui.components.GlassStyle
 import ru.lct2026.finedu.productcore.ui.components.SoundSettings
 import ru.lct2026.finedu.productcore.ui.components.glass
+import ru.lct2026.finedu.productcore.ui.ic_check
 import ru.lct2026.finedu.productcore.ui.preview.FinEduPreview
 import ru.lct2026.finedu.productcore.ui.sound.LocalSoundPlayer
 import ru.lct2026.finedu.productcore.ui.sound.SoundEffect
+import ru.lct2026.finedu.productcore.ui.sound_title
 import ru.lct2026.finedu.productcore.ui.theme.FinEduTheme
 
 /** Вкладка «Настройки»: бонус, возрастной режим, звук, спокойный режим, крупный шрифт, сброс и удаление. */
@@ -85,7 +89,7 @@ internal fun SettingsTab(
             SecondaryText(stringResource(settings.ageMode.hintRes))
         }
         ParentCard {
-            SectionTitle(stringResource(CoreR.string.sound_title))
+            SectionTitle(stringResource(CoreRes.string.sound_title))
             SoundSettings(
                 volume = settings.volume,
                 musicEnabled = settings.musicEnabled,
@@ -165,7 +169,7 @@ private fun BonusCard(
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Icon(
-                    painter = painterResource(CoreR.drawable.ic_check),
+                    painter = painterResource(CoreRes.drawable.ic_check),
                     contentDescription = null,
                     tint = FinEduTheme.colors.savings
                 )
@@ -195,7 +199,7 @@ private fun OptionChip(text: String, isSelected: Boolean, onClick: () -> Unit, m
     ) {
         if (isSelected) {
             Icon(
-                painter = painterResource(CoreR.drawable.ic_check),
+                painter = painterResource(CoreRes.drawable.ic_check),
                 contentDescription = null,
                 tint = FinEduTheme.colors.gold,
                 modifier = Modifier.size(18.dp)

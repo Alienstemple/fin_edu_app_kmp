@@ -23,17 +23,19 @@ import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.clipPath
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import ru.lct2026.finedu.productcore.domain.model.GameRules
 import ru.lct2026.finedu.productcore.domain.model.PetStat
-import ru.lct2026.finedu.productcore.ui.R
+import ru.lct2026.finedu.productcore.ui.Res
 import ru.lct2026.finedu.productcore.ui.preview.FinEduPreview
+import ru.lct2026.finedu.productcore.ui.stat_tired_a11y
+import ru.lct2026.finedu.productcore.ui.stat_value_a11y
 import ru.lct2026.finedu.productcore.ui.theme.FinEduTheme
 
 /**
@@ -44,9 +46,9 @@ import ru.lct2026.finedu.productcore.ui.theme.FinEduTheme
 fun TubeIndicator(stat: PetStat, value: Int, modifier: Modifier = Modifier, showValue: Boolean = true) {
     val label = stringResource(stat.labelRes)
     val description = if (value <= GameRules.TIRED_THRESHOLD) {
-        stringResource(R.string.stat_tired_a11y, label)
+        stringResource(Res.string.stat_tired_a11y, label)
     } else {
-        stringResource(R.string.stat_value_a11y, label, value)
+        stringResource(Res.string.stat_value_a11y, label, value)
     }
     val liquid = stat.color
     val glass = FinEduTheme.colors.glassStrongBorder

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Генератор Lottie-анимации Дзыня: app-modules/product-core/ui/src/main/res/raw/anim_dzyn.json.
+"""Генератор Lottie-анимации Дзыня: app-modules/product-core/ui/src/commonMain/composeResources/files/anim_dzyn.json.
 
 Запуск из корня репозитория: python3 scripts/lottie/generate_dzyn.py
 
@@ -17,7 +17,7 @@ import math
 import re
 from pathlib import Path
 
-OUT = Path(__file__).resolve().parents[2] / "app-modules/product-core/ui/src/main/res/raw/anim_dzyn.json"
+OUT = Path(__file__).resolve().parents[2] / "app-modules/product-core/ui/src/commonMain/composeResources/files/anim_dzyn.json"
 
 W, H, FPS = 200, 190, 30
 SEGMENT = 120  # длина маркера эмоции, кадры

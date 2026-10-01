@@ -15,14 +15,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import ru.lct2026.finedu.productcore.domain.model.Dzynki
-import ru.lct2026.finedu.productcore.ui.R
+import ru.lct2026.finedu.productcore.ui.Res
+import ru.lct2026.finedu.productcore.ui.ic_minus
+import ru.lct2026.finedu.productcore.ui.ic_plus
 import ru.lct2026.finedu.productcore.ui.preview.FinEduPreview
+import ru.lct2026.finedu.productcore.ui.stepper_minus
+import ru.lct2026.finedu.productcore.ui.stepper_plus
 
 /** Шаг степпера: суммы кратны 10 (ТЗ: простые вычисления). */
 const val STEPPER_STEP = 10
@@ -43,8 +48,8 @@ fun AmountStepper(
         horizontalArrangement = Arrangement.spacedBy(4.dp)
     ) {
         StepButton(
-            iconRes = R.drawable.ic_minus,
-            description = stringResource(R.string.stepper_minus, STEPPER_STEP),
+            iconRes = Res.drawable.ic_minus,
+            description = stringResource(Res.string.stepper_minus, STEPPER_STEP),
             enabled = canMinus,
             onClick = onMinus
         )
@@ -55,8 +60,8 @@ fun AmountStepper(
             modifier = Modifier.widthIn(min = 52.dp)
         )
         StepButton(
-            iconRes = R.drawable.ic_plus,
-            description = stringResource(R.string.stepper_plus, STEPPER_STEP),
+            iconRes = Res.drawable.ic_plus,
+            description = stringResource(Res.string.stepper_plus, STEPPER_STEP),
             enabled = canPlus,
             onClick = onPlus
         )
@@ -64,7 +69,7 @@ fun AmountStepper(
 }
 
 @Composable
-private fun StepButton(iconRes: Int, description: String, enabled: Boolean, onClick: () -> Unit) {
+private fun StepButton(iconRes: DrawableResource, description: String, enabled: Boolean, onClick: () -> Unit) {
     IconButton(
         onClick = onClick,
         enabled = enabled,

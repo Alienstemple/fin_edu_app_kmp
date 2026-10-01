@@ -22,9 +22,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import org.jetbrains.compose.resources.painterResource
 import ru.lct2026.finedu.feature.parent.ui.R
 import ru.lct2026.finedu.productcore.domain.model.ScamScheme
-import ru.lct2026.finedu.productcore.ui.R as CoreR
+import ru.lct2026.finedu.productcore.ui.Res as CoreRes
+import ru.lct2026.finedu.productcore.ui.ic_check
 import ru.lct2026.finedu.productcore.ui.preview.FinEduPreview
 import ru.lct2026.finedu.productcore.ui.theme.FinEduTheme
 
@@ -77,7 +79,7 @@ private fun SchemeRow(scheme: ScamScheme, isDiscussed: Boolean, onToggle: () -> 
         ) {
             if (isDiscussed) {
                 Icon(
-                    painter = painterResource(CoreR.drawable.ic_check),
+                    painter = painterResource(CoreRes.drawable.ic_check),
                     contentDescription = null,
                     tint = colors.savings,
                     modifier = Modifier.size(20.dp)

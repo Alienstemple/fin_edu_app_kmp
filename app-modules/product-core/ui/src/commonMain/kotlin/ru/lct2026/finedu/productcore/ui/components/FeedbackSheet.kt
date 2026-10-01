@@ -1,6 +1,5 @@
 package ru.lct2026.finedu.productcore.ui.components
 
-import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -23,13 +22,14 @@ import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import kotlin.math.abs
+import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import ru.lct2026.finedu.productcore.domain.model.Bag
 import ru.lct2026.finedu.productcore.domain.model.Change
 import ru.lct2026.finedu.productcore.domain.model.Dzynki
@@ -41,7 +41,29 @@ import ru.lct2026.finedu.productcore.domain.model.PetLook
 import ru.lct2026.finedu.productcore.domain.model.PetStage
 import ru.lct2026.finedu.productcore.domain.model.PetStat
 import ru.lct2026.finedu.productcore.domain.model.StatChange
-import ru.lct2026.finedu.productcore.ui.R
+import ru.lct2026.finedu.productcore.ui.Res
+import ru.lct2026.finedu.productcore.ui.feedback_back_home
+import ru.lct2026.finedu.productcore.ui.feedback_balance
+import ru.lct2026.finedu.productcore.ui.feedback_changed
+import ru.lct2026.finedu.productcore.ui.feedback_line_deposit
+import ru.lct2026.finedu.productcore.ui.feedback_line_goal
+import ru.lct2026.finedu.productcore.ui.feedback_line_need
+import ru.lct2026.finedu.productcore.ui.feedback_line_pause
+import ru.lct2026.finedu.productcore.ui.feedback_line_want
+import ru.lct2026.finedu.productcore.ui.feedback_line_withdraw
+import ru.lct2026.finedu.productcore.ui.feedback_minus
+import ru.lct2026.finedu.productcore.ui.feedback_next
+import ru.lct2026.finedu.productcore.ui.feedback_pause_tag
+import ru.lct2026.finedu.productcore.ui.feedback_plus
+import ru.lct2026.finedu.productcore.ui.feedback_unchanged
+import ru.lct2026.finedu.productcore.ui.feedback_why
+import ru.lct2026.finedu.productcore.ui.feedback_why_deposit
+import ru.lct2026.finedu.productcore.ui.feedback_why_goal
+import ru.lct2026.finedu.productcore.ui.feedback_why_need
+import ru.lct2026.finedu.productcore.ui.feedback_why_pause
+import ru.lct2026.finedu.productcore.ui.feedback_why_want
+import ru.lct2026.finedu.productcore.ui.feedback_why_withdraw
+import ru.lct2026.finedu.productcore.ui.ic_coin
 import ru.lct2026.finedu.productcore.ui.illustration.PetMood
 import ru.lct2026.finedu.productcore.ui.illustration.PetView
 import ru.lct2026.finedu.productcore.ui.preview.FinEduPreview
@@ -119,14 +141,14 @@ private fun FeedbackContent(
                 )
             }
         }
-        SectionTitle(R.string.feedback_changed)
+        SectionTitle(Res.string.feedback_changed)
         Column(modifier = Modifier.glass().padding(horizontal = 14.dp, vertical = 4.dp)) {
             ChangeRow(
-                label = stringResource(R.string.feedback_balance),
+                label = stringResource(Res.string.feedback_balance),
                 from = feedback.balance.from.amount,
                 to = feedback.balance.to.amount,
                 icon = {
-                    Image(painterResource(R.drawable.ic_coin), contentDescription = null, Modifier.size(28.dp))
+                    Image(painterResource(Res.drawable.ic_coin), contentDescription = null, Modifier.size(28.dp))
                 }
             )
             ChangeRow(
@@ -151,10 +173,10 @@ private fun FeedbackContent(
                 }
             )
         }
-        SectionTitle(R.string.feedback_why)
+        SectionTitle(Res.string.feedback_why)
         Text(text = why, style = MaterialTheme.typography.bodyMedium)
-        SectionTitle(R.string.feedback_next)
-        FinButton(text = stringResource(R.string.feedback_back_home), onClick = onPrimary)
+        SectionTitle(Res.string.feedback_next)
+        FinButton(text = stringResource(Res.string.feedback_back_home), onClick = onPrimary)
         if (secondaryText != null && onSecondary != null) {
             FinButton(text = secondaryText, onClick = onSecondary, style = FinButtonStyle.Secondary)
         }
@@ -162,7 +184,7 @@ private fun FeedbackContent(
 }
 
 @Composable
-private fun SectionTitle(@StringRes textRes: Int) {
+private fun SectionTitle(textRes: StringResource) {
     Text(
         text = stringResource(textRes),
         style = MaterialTheme.typography.titleMedium,
@@ -184,7 +206,7 @@ private fun ChangeRow(label: String, from: Int, to: Int, icon: @Composable () ->
         Box(modifier = Modifier.size(36.dp), contentAlignment = Alignment.Center) { icon() }
         Text(text = label, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.weight(1f))
         val value = if (from == to) {
-            "${stringResource(R.string.feedback_unchanged)} · $to"
+            "${stringResource(Res.string.feedback_unchanged)} · $to"
         } else {
             "$from → $to"
         }
@@ -203,14 +225,14 @@ private fun ChangeRow(label: String, from: Int, to: Int, icon: @Composable () ->
 private fun amountTag(feedback: Feedback): String {
     val moved = abs(feedback.bagChange.to.amount - feedback.bagChange.from.amount)
     return when (feedback.reason) {
-        FeedbackReason.PAUSED -> stringResource(R.string.feedback_pause_tag)
+        FeedbackReason.PAUSED -> stringResource(Res.string.feedback_pause_tag)
 
-        FeedbackReason.DEPOSITED -> stringResource(R.string.feedback_plus, dzynkiText(moved))
+        FeedbackReason.DEPOSITED -> stringResource(Res.string.feedback_plus, dzynkiText(moved))
 
         FeedbackReason.BOUGHT_NEED,
         FeedbackReason.BOUGHT_WANT,
         FeedbackReason.WITHDREW,
-        FeedbackReason.GOAL_PLACED -> stringResource(R.string.feedback_minus, dzynkiText(moved))
+        FeedbackReason.GOAL_PLACED -> stringResource(Res.string.feedback_minus, dzynkiText(moved))
     }
 }
 
@@ -223,14 +245,14 @@ private val FeedbackReason.mood: PetMood
         FeedbackReason.GOAL_PLACED -> PetMood.PROUD
     }
 
-private val FeedbackReason.lineRes: Int
+private val FeedbackReason.lineRes: StringResource
     get() = when (this) {
-        FeedbackReason.BOUGHT_NEED -> R.string.feedback_line_need
-        FeedbackReason.BOUGHT_WANT -> R.string.feedback_line_want
-        FeedbackReason.PAUSED -> R.string.feedback_line_pause
-        FeedbackReason.DEPOSITED -> R.string.feedback_line_deposit
-        FeedbackReason.WITHDREW -> R.string.feedback_line_withdraw
-        FeedbackReason.GOAL_PLACED -> R.string.feedback_line_goal
+        FeedbackReason.BOUGHT_NEED -> Res.string.feedback_line_need
+        FeedbackReason.BOUGHT_WANT -> Res.string.feedback_line_want
+        FeedbackReason.PAUSED -> Res.string.feedback_line_pause
+        FeedbackReason.DEPOSITED -> Res.string.feedback_line_deposit
+        FeedbackReason.WITHDREW -> Res.string.feedback_line_withdraw
+        FeedbackReason.GOAL_PLACED -> Res.string.feedback_line_goal
     }
 
 /** Звенит монетка, когда дзыньки потрачены или отложены; пауза и снятие из копилки — без звука. */
@@ -242,14 +264,14 @@ private val FeedbackReason.sound: SoundEffect?
         FeedbackReason.PAUSED, FeedbackReason.WITHDREW -> null
     }
 
-private val FeedbackReason.whyRes: Int
+private val FeedbackReason.whyRes: StringResource
     get() = when (this) {
-        FeedbackReason.BOUGHT_NEED -> R.string.feedback_why_need
-        FeedbackReason.BOUGHT_WANT -> R.string.feedback_why_want
-        FeedbackReason.PAUSED -> R.string.feedback_why_pause
-        FeedbackReason.DEPOSITED -> R.string.feedback_why_deposit
-        FeedbackReason.WITHDREW -> R.string.feedback_why_withdraw
-        FeedbackReason.GOAL_PLACED -> R.string.feedback_why_goal
+        FeedbackReason.BOUGHT_NEED -> Res.string.feedback_why_need
+        FeedbackReason.BOUGHT_WANT -> Res.string.feedback_why_want
+        FeedbackReason.PAUSED -> Res.string.feedback_why_pause
+        FeedbackReason.DEPOSITED -> Res.string.feedback_why_deposit
+        FeedbackReason.WITHDREW -> Res.string.feedback_why_withdraw
+        FeedbackReason.GOAL_PLACED -> Res.string.feedback_why_goal
     }
 
 @Preview(heightDp = 760)

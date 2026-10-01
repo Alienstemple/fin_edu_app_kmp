@@ -29,15 +29,17 @@ import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
+import org.jetbrains.compose.resources.painterResource
 import ru.lct2026.finedu.feature.learn.ui.R
 import ru.lct2026.finedu.feature.learn.ui.ShortsReward
 import ru.lct2026.finedu.feature.learn.ui.ShortsUiState
-import ru.lct2026.finedu.productcore.ui.R as CoreR
+import ru.lct2026.finedu.productcore.ui.Res as CoreRes
 import ru.lct2026.finedu.productcore.ui.components.FinButton
 import ru.lct2026.finedu.productcore.ui.components.FinButtonStyle
 import ru.lct2026.finedu.productcore.ui.components.GlassStyle
 import ru.lct2026.finedu.productcore.ui.components.dzynkiText
 import ru.lct2026.finedu.productcore.ui.components.glass
+import ru.lct2026.finedu.productcore.ui.ic_coin
 import ru.lct2026.finedu.productcore.ui.illustration.PetMood
 import ru.lct2026.finedu.productcore.ui.illustration.PetView
 import ru.lct2026.finedu.productcore.ui.sound.PlaySoundOnce
@@ -123,7 +125,7 @@ private fun RewardBanner(reward: ShortsReward) {
         horizontalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         Image(
-            painter = painterResource(CoreR.drawable.ic_coin),
+            painter = painterResource(CoreRes.drawable.ic_coin),
             contentDescription = null,
             modifier = Modifier.size(28.dp)
         )

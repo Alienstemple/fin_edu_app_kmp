@@ -30,6 +30,7 @@ import androidx.compose.ui.text.drawText
 import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import org.jetbrains.compose.resources.painterResource
 import ru.lct2026.finedu.feature.parent.domain.model.SavingsChart
 import ru.lct2026.finedu.feature.parent.domain.model.ThemeStatus
 import ru.lct2026.finedu.feature.parent.ui.ProgressUiState
@@ -37,8 +38,9 @@ import ru.lct2026.finedu.feature.parent.ui.R
 import ru.lct2026.finedu.feature.parent.ui.ThemeProgress
 import ru.lct2026.finedu.productcore.domain.model.Dzynki
 import ru.lct2026.finedu.productcore.domain.model.QuestTheme
-import ru.lct2026.finedu.productcore.ui.R as CoreR
+import ru.lct2026.finedu.productcore.ui.Res as CoreRes
 import ru.lct2026.finedu.productcore.ui.components.DzynkiAmount
+import ru.lct2026.finedu.productcore.ui.ic_check
 import ru.lct2026.finedu.productcore.ui.preview.FinEduPreview
 import ru.lct2026.finedu.productcore.ui.theme.FinEduTheme
 
@@ -233,7 +235,7 @@ private fun StatusDot(status: ThemeStatus) {
     ) {
         when (status) {
             ThemeStatus.DONE -> Icon(
-                painter = painterResource(CoreR.drawable.ic_check),
+                painter = painterResource(CoreRes.drawable.ic_check),
                 contentDescription = null,
                 tint = colors.savings,
                 modifier = Modifier.size(20.dp)

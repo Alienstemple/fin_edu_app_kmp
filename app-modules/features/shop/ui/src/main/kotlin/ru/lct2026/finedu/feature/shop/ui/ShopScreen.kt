@@ -35,6 +35,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import ru.lct2026.finedu.feature.shop.ui.component.ItemPicture
 import ru.lct2026.finedu.feature.shop.ui.component.PurchaseContent
 import ru.lct2026.finedu.feature.shop.ui.component.ShopBottomSheet
@@ -45,6 +47,7 @@ import ru.lct2026.finedu.productcore.domain.model.BagAmounts
 import ru.lct2026.finedu.productcore.domain.model.Dzynki
 import ru.lct2026.finedu.productcore.domain.model.FeedbackReason
 import ru.lct2026.finedu.productcore.domain.model.ShopItem
+import ru.lct2026.finedu.productcore.ui.Res as CoreRes
 import ru.lct2026.finedu.productcore.ui.components.DzynkiAmount
 import ru.lct2026.finedu.productcore.ui.components.FeedbackSheet
 import ru.lct2026.finedu.productcore.ui.components.FinBottomBar
@@ -59,6 +62,7 @@ import ru.lct2026.finedu.productcore.ui.components.dzynkiText
 import ru.lct2026.finedu.productcore.ui.components.glass
 import ru.lct2026.finedu.productcore.ui.components.iconRes
 import ru.lct2026.finedu.productcore.ui.components.labelRes
+import ru.lct2026.finedu.productcore.ui.ic_check
 import ru.lct2026.finedu.productcore.ui.preview.FinEduPreview
 
 @Composable
@@ -231,7 +235,7 @@ private fun BagTabs(selected: Bag, onTabClick: (Bag) -> Unit) {
                 )
                 if (isSelected) {
                     Icon(
-                        painter = painterResource(ru.lct2026.finedu.productcore.ui.R.drawable.ic_check),
+                        painter = painterResource(CoreRes.drawable.ic_check),
                         contentDescription = null,
                         modifier = Modifier.size(20.dp)
                     )

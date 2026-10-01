@@ -22,8 +22,6 @@ import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
@@ -31,10 +29,20 @@ import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import kotlin.math.roundToInt
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import ru.lct2026.finedu.productcore.domain.model.Settings
-import ru.lct2026.finedu.productcore.ui.R
+import ru.lct2026.finedu.productcore.ui.Res
+import ru.lct2026.finedu.productcore.ui.ic_music
+import ru.lct2026.finedu.productcore.ui.ic_sound_off
+import ru.lct2026.finedu.productcore.ui.ic_sound_on
 import ru.lct2026.finedu.productcore.ui.preview.FinEduPreview
 import ru.lct2026.finedu.productcore.ui.sound.SoundControls
+import ru.lct2026.finedu.productcore.ui.sound_music
+import ru.lct2026.finedu.productcore.ui.sound_title
+import ru.lct2026.finedu.productcore.ui.sound_volume
+import ru.lct2026.finedu.productcore.ui.sound_volume_off
+import ru.lct2026.finedu.productcore.ui.sound_volume_value
 import ru.lct2026.finedu.productcore.ui.theme.FinEduTheme
 
 /**
@@ -51,19 +59,19 @@ fun SoundSettings(
 ) {
     val colors = FinEduTheme.colors
     val volumeText = if (volume == 0) {
-        stringResource(R.string.sound_volume_off)
+        stringResource(Res.string.sound_volume_off)
     } else {
-        stringResource(R.string.sound_volume_value, volume, Settings.MAX_VOLUME)
+        stringResource(Res.string.sound_volume_value, volume, Settings.MAX_VOLUME)
     }
     Column(modifier = modifier, verticalArrangement = Arrangement.spacedBy(8.dp)) {
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
             Icon(
-                painter = painterResource(if (volume == 0) R.drawable.ic_sound_off else R.drawable.ic_sound_on),
+                painter = painterResource(if (volume == 0) Res.drawable.ic_sound_off else Res.drawable.ic_sound_on),
                 contentDescription = null,
                 modifier = Modifier.size(24.dp)
             )
             Text(
-                text = stringResource(R.string.sound_volume),
+                text = stringResource(Res.string.sound_volume),
                 style = MaterialTheme.typography.titleMedium,
                 modifier = Modifier.weight(1f)
             )
@@ -95,12 +103,12 @@ fun SoundSettings(
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             Icon(
-                painter = painterResource(R.drawable.ic_music),
+                painter = painterResource(Res.drawable.ic_music),
                 contentDescription = null,
                 modifier = Modifier.size(24.dp)
             )
             Text(
-                text = stringResource(R.string.sound_music),
+                text = stringResource(Res.string.sound_music),
                 style = MaterialTheme.typography.titleMedium,
                 modifier = Modifier.weight(1f)
             )
@@ -129,7 +137,7 @@ internal fun SoundSheet(controls: SoundControls, onDismiss: () -> Unit) {
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             Text(
-                text = stringResource(R.string.sound_title),
+                text = stringResource(Res.string.sound_title),
                 style = MaterialTheme.typography.titleLarge,
                 modifier = Modifier.semantics { heading() }
             )

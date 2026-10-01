@@ -14,10 +14,10 @@
 
     <!-- Дзыньки. -->
     <plurals name="dzynki_amount">
-        <item quantity="one">%d дзынька</item>
-        <item quantity="few">%d дзыньки</item>
-        <item quantity="many">%d дзынек</item>
-        <item quantity="other">%d дзынек</item>
+        <item quantity="one">%1$d дзынька</item>
+        <item quantity="few">%1$d дзыньки</item>
+        <item quantity="many">%1$d дзынек</item>
+        <item quantity="other">%1$d дзынек</item>
     </plurals>
 
     <!-- Навигация. -->

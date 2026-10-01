@@ -33,6 +33,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import org.jetbrains.compose.resources.painterResource
 import ru.lct2026.finedu.productcore.domain.model.Dzynki
 import ru.lct2026.finedu.productcore.domain.model.PetFur
 import ru.lct2026.finedu.productcore.domain.model.PetHat
@@ -41,7 +42,7 @@ import ru.lct2026.finedu.productcore.domain.model.PetStage
 import ru.lct2026.finedu.productcore.domain.model.QuestLevel
 import ru.lct2026.finedu.productcore.domain.model.QuestTheme
 import ru.lct2026.finedu.productcore.navigation.api.FinEduRoute
-import ru.lct2026.finedu.productcore.ui.R as CoreR
+import ru.lct2026.finedu.productcore.ui.Res as CoreRes
 import ru.lct2026.finedu.productcore.ui.components.FinBottomBar
 import ru.lct2026.finedu.productcore.ui.components.FinButton
 import ru.lct2026.finedu.productcore.ui.components.FinButtonStyle
@@ -52,6 +53,8 @@ import ru.lct2026.finedu.productcore.ui.components.MinTouchTarget
 import ru.lct2026.finedu.productcore.ui.components.dzynkiText
 import ru.lct2026.finedu.productcore.ui.components.glass
 import ru.lct2026.finedu.productcore.ui.event.ObserveEvents
+import ru.lct2026.finedu.productcore.ui.ic_check
+import ru.lct2026.finedu.productcore.ui.ic_chevron_right
 import ru.lct2026.finedu.productcore.ui.illustration.PetMood
 import ru.lct2026.finedu.productcore.ui.illustration.PetView
 import ru.lct2026.finedu.productcore.ui.preview.FinEduPreview
@@ -266,7 +269,9 @@ private fun QuestStatus(isCompleted: Boolean) {
     val color = if (isCompleted) MaterialTheme.colorScheme.onSurfaceVariant else FinEduTheme.colors.gold
     Row(horizontalArrangement = Arrangement.spacedBy(4.dp), verticalAlignment = Alignment.CenterVertically) {
         Icon(
-            painter = painterResource(if (isCompleted) CoreR.drawable.ic_check else CoreR.drawable.ic_chevron_right),
+            painter = painterResource(
+                if (isCompleted) CoreRes.drawable.ic_check else CoreRes.drawable.ic_chevron_right
+            ),
             contentDescription = null,
             tint = color,
             modifier = Modifier.size(20.dp)
