@@ -27,7 +27,16 @@ class RootProjectConventionPlugin : Plugin<Project> {
             extensions.configure<DetektExtension> {
                 buildUponDefaultConfig = true
                 config.setFrom(rootProject.file("config/detekt/detekt.yml"))
-                source.setFrom("src/main/kotlin", "src/test/kotlin", "src/testDebug/kotlin", "src/androidTest/kotlin")
+                source.setFrom(
+                    "src/main/kotlin",
+                    "src/test/kotlin",
+                    "src/testDebug/kotlin",
+                    "src/androidTest/kotlin",
+                    "src/commonMain/kotlin",
+                    "src/androidMain/kotlin",
+                    "src/iosMain/kotlin",
+                    "src/androidHostTest/kotlin"
+                )
             }
             // detekt 1.23 собран под свою версию Kotlin — не даём Gradle поднять её до версии проекта.
             configurations.matching { it.name == "detekt" }.configureEach {
@@ -38,6 +47,9 @@ class RootProjectConventionPlugin : Plugin<Project> {
 
             pluginManager.withPlugin(catalog.pluginId("kotlin-jvm")) { enableKover(subproject, koverPluginId) }
             pluginManager.withPlugin(catalog.pluginId("android-library")) { enableKover(subproject, koverPluginId) }
+            pluginManager.withPlugin(catalog.pluginId("kotlin-multiplatform")) {
+                enableKover(subproject, koverPluginId)
+            }
         }
     }
 

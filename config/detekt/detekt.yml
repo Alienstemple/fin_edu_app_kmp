@@ -2,6 +2,8 @@
 naming:
   FunctionNaming:
     ignoreAnnotated: ['Composable']
+    # Дефолтные исключения detekt + androidHostTest (unit-тесты KMP-модулей): имена тестов в обратных кавычках.
+    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/androidUnitTest/**', '**/androidInstrumentedTest/**', '**/iosTest/**', '**/androidHostTest/**']
   TopLevelPropertyNaming:
     constantPattern: '[A-Z][A-Za-z0-9_]*'
 
@@ -20,7 +22,7 @@ style:
     ignoreCompanionObjectPropertyDeclaration: true
     ignoreAnnotated: ['Preview']
     # theme — токены, illustration — координаты SVG-рисунков из макета (питомец, уголок).
-    excludes: ['**/test/**', '**/testDebug/**', '**/androidTest/**', '**/theme/**', '**/illustration/**']
+    excludes: ['**/test/**', '**/testDebug/**', '**/androidTest/**', '**/androidHostTest/**', '**/theme/**', '**/illustration/**']
   UnusedPrivateMember:
     ignoreAnnotated: ['Preview', 'PreviewLightDark']
   WildcardImport:

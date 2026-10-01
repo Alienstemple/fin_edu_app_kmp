@@ -137,6 +137,7 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 | `.agents/skill-definitions/android-e2e-test-automator.md`       | Написание Android e2e UI tests в `app/src/androidTest`.                    |
 | `.agents/skill-definitions/android-e2e-test-reviewer.md`        | Ревью Android e2e UI tests, flaky/infra риски.                             |
 | `.agents/skill-definitions/motion-design.md`                    | Анимации в Compose и Lottie: тайминги, easing, ограничения ТЗ.             |
+| `.agents/skill-definitions/kmp-migration.md`                    | Перевод на KMP: Compose Multiplatform, kotlin-inject вместо Hilt, Ktor.    |
 
 ## Documentation
 
