@@ -1,9 +1,10 @@
 # Дополняет дефолтный конфиг detekt (buildUponDefaultConfig = true).
+# Дефолтные исключения тестовых source sets detekt не знают про androidHostTest (unit-тесты KMP-модулей):
+# повторяем их список с ним для всех активных правил, где они есть.
 naming:
   FunctionNaming:
     ignoreAnnotated: ['Composable']
-    # Дефолтные исключения detekt + androidHostTest (unit-тесты KMP-модулей): имена тестов в обратных кавычках.
-    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/androidUnitTest/**', '**/androidInstrumentedTest/**', '**/iosTest/**', '**/androidHostTest/**']
+    excludes: &testSources ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/androidUnitTest/**', '**/androidInstrumentedTest/**', '**/jsTest/**', '**/iosTest/**', '**/androidHostTest/**']
   TopLevelPropertyNaming:
     constantPattern: '[A-Z][A-Za-z0-9_]*'
 
@@ -15,6 +16,25 @@ complexity:
     ignoreAnnotated: ['Composable']
   TooManyFunctions:
     ignorePrivate: true
+    excludes: *testSources
+
+exceptions:
+  InstanceOfCheckForException:
+    excludes: *testSources
+  ThrowingExceptionsWithoutMessageOrCause:
+    excludes: *testSources
+  TooGenericExceptionCaught:
+    excludes: *testSources
+
+performance:
+  ForEachOnRange:
+    excludes: *testSources
+  SpreadOperator:
+    excludes: *testSources
+
+potential-bugs:
+  UnsafeCallOnNullableType:
+    excludes: *testSources
 
 style:
   MagicNumber:

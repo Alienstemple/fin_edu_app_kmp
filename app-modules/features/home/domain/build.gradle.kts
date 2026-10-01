@@ -1,8 +1,12 @@
 plugins {
-    alias(libs.plugins.convention.kotlin.feature.domain)
+    alias(libs.plugins.convention.kmp.feature.domain)
 }
 
-dependencies {
-    // Flow в публичных сигнатурах репозиториев
-    api(libs.kotlinx.coroutines.core)
+kotlin {
+    sourceSets {
+        commonMain.dependencies {
+            // Flow в публичных сигнатурах репозиториев
+            api(libs.kotlinx.coroutines.core)
+        }
+    }
 }

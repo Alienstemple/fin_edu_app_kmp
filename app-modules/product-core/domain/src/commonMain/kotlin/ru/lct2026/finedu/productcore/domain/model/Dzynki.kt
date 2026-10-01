@@ -1,5 +1,7 @@
 package ru.lct2026.finedu.productcore.domain.model
 
+import kotlin.jvm.JvmInline
+
 /**
  * Игровая валюта — «дзыньки». Сумма не бывает отрицательной: уйти в минус нельзя (ТЗ 2.5.6).
  */

@@ -1,3 +1,3 @@
 plugins {
-    alias(libs.plugins.convention.kotlin.feature.domain)
+    alias(libs.plugins.convention.kmp.feature.domain)
 }

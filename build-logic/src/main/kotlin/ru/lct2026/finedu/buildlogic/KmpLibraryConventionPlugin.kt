@@ -29,6 +29,12 @@ class KmpLibraryConventionPlugin : Plugin<Project> {
                 "--add-exports=java.base/jdk.internal.access=ALL-UNNAMED"
             )
         }
+        // В KMP-модуле нет задачи `test`: без неё `./gradlew test` молча пропускает модуль.
+        tasks.register("test") {
+            group = "verification"
+            description = "Runs JVM unit tests of the Android target (androidHostTest)."
+            dependsOn("testAndroidHostTest")
+        }
         sourceSetDependencies(ANDROID_HOST_TEST) {
             implementation(libs.lib("test-junit"))
             implementation(libs.lib("test-mockk"))

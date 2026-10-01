@@ -1,7 +1,11 @@
 plugins {
-    alias(libs.plugins.convention.kotlin.jvm)
+    alias(libs.plugins.convention.kmp.library)
 }
 
-dependencies {
-    implementation(libs.kotlinx.coroutines.core)
+kotlin {
+    sourceSets {
+        commonMain.dependencies {
+            implementation(libs.kotlinx.coroutines.core)
+        }
+    }
 }
