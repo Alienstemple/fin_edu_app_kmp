@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <!-- ТЗ: приложение работает без сети и не запрашивает разрешений. -->
+    <!-- OkHttp (движок Ktor) добавляет INTERNET в свой манифест — убираем: без него сетевой вызов невозможен. -->
+    <uses-permission
+        android:name="android.permission.INTERNET"
+        tools:node="remove" />
 
     <application
         android:name=".FinEduApplication"

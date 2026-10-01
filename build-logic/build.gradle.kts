@@ -57,6 +57,10 @@ gradlePlugin {
             id = "convention.kmp-library-compose"
             implementationClass = "ru.lct2026.finedu.buildlogic.KmpLibraryComposeConventionPlugin"
         }
+        register("kmpComposeResources") {
+            id = "convention.kmp-compose-resources"
+            implementationClass = "ru.lct2026.finedu.buildlogic.KmpComposeResourcesConventionPlugin"
+        }
         register("kmpFeatureDomain") {
             id = "convention.kmp-feature-domain"
             implementationClass = "ru.lct2026.finedu.buildlogic.KmpFeatureDomainConventionPlugin"

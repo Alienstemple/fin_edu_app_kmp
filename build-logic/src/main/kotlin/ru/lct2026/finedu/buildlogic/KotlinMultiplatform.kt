@@ -38,20 +38,12 @@ internal fun Project.sourceSetDependencies(name: String, block: KotlinDependency
  * Класс `Res` генерируется в пакете модуля — как раньше `R`.
  */
 internal fun Project.configureComposeMultiplatform(publicResources: Boolean = false) {
-    pluginManager.apply(libs.pluginId("kotlin-compose"))
-    pluginManager.apply(libs.pluginId("compose-multiplatform"))
-
-    (extensions.getByType<ComposeExtension>() as ExtensionAware).extensions.configure<ResourcesExtension> {
-        packageOfResClass = kmpNamespace
-        publicResClass = publicResources
-    }
+    configureComposeResources(publicResources)
 
     sourceSetDependencies("commonMain") {
-        implementation(libs.lib("cmp-runtime"))
         implementation(libs.lib("cmp-foundation"))
         implementation(libs.lib("cmp-ui"))
         implementation(libs.lib("cmp-material3"))
-        implementation(libs.lib("cmp-components-resources"))
         implementation(libs.lib("cmp-ui-tooling-preview"))
     }
     sourceSetDependencies(ANDROID_HOST_TEST) {
@@ -61,6 +53,28 @@ internal fun Project.configureComposeMultiplatform(publicResources: Boolean = fa
         // ComponentActivity для createComposeRule() под Robolectric.
         implementation(libs.lib("androidx-compose-ui-test-manifest"))
         implementation(libs.lib("test-robolectric"))
+    }
+}
+
+/**
+ * Только ресурсы `composeResources` (без Compose UI): например, JSON-контент в `data`.
+ * Плагин ресурсов требует компилятор Compose, а тот — `compose.runtime`; UI-библиотеки не подключаются.
+ * На Android ресурсы упаковываются в assets — без `androidResources.enable` их не найти в рантайме.
+ */
+internal fun Project.configureComposeResources(publicResources: Boolean = false) {
+    pluginManager.apply(libs.pluginId("kotlin-compose"))
+    pluginManager.apply(libs.pluginId("compose-multiplatform"))
+
+    (extensions.getByType<ComposeExtension>() as ExtensionAware).extensions.configure<ResourcesExtension> {
+        packageOfResClass = kmpNamespace
+        publicResClass = publicResources
+    }
+    (kotlinMultiplatform as ExtensionAware).extensions.configure<KotlinMultiplatformAndroidLibraryExtension> {
+        androidResources.enable = true
+    }
+    sourceSetDependencies("commonMain") {
+        implementation(libs.lib("cmp-runtime"))
+        implementation(libs.lib("cmp-components-resources"))
     }
 }
 

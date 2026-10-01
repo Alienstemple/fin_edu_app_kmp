@@ -27,7 +27,7 @@ jetbrains-lifecycle = "2.10.0"
 jetbrains-navigation = "2.9.2"
 kotlin-inject = "0.9.0"
 compottie = "2.2.4"
-ktor = "3.6.0"
+ktor = "3.5.2"
 okio = "3.18.2"
 
 android-compileSdk = "36"
@@ -121,6 +121,7 @@ convention-android-library-compose = { id = "convention.android-library-compose"
 convention-kotlin-jvm = { id = "convention.kotlin-jvm" }
 convention-kmp-library = { id = "convention.kmp-library" }
 convention-kmp-library-compose = { id = "convention.kmp-library-compose" }
+convention-kmp-compose-resources = { id = "convention.kmp-compose-resources" }
 convention-kmp-feature-domain = { id = "convention.kmp-feature-domain" }
 convention-kmp-feature-data = { id = "convention.kmp-feature-data" }
 convention-kmp-feature-ui = { id = "convention.kmp-feature-ui" }

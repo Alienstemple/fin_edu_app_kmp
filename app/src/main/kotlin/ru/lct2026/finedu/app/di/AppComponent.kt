@@ -16,6 +16,8 @@ import ru.lct2026.finedu.feature.savings.ui.di.SavingsUiComponent
 import ru.lct2026.finedu.feature.shop.ui.di.ShopUiComponent
 import ru.lct2026.finedu.productcore.data.di.AppScope
 import ru.lct2026.finedu.productcore.data.di.ProductCoreDataComponent
+import ru.lct2026.finedu.productcore.data.local.GameStoragePath
+import ru.lct2026.finedu.productcore.data.local.gameStoragePath
 import ru.lct2026.finedu.productcore.domain.repository.GameRepository
 import ru.lct2026.finedu.productcore.navigation.api.FeatureNavigationContribution
 
@@ -43,4 +45,7 @@ internal abstract class AppComponent(@get:Provides val context: Context) :
     abstract val gameRepository: GameRepository
 
     abstract val gameAudio: GameAudio
+
+    @Provides
+    fun provideGameStoragePath(): GameStoragePath = gameStoragePath(context)
 }
