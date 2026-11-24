@@ -20,7 +20,6 @@ class KmpFeatureUiConventionPlugin : Plugin<Project> {
             implementation(libs.lib("jetbrains-lifecycle-runtime-compose"))
             implementation(libs.lib("jetbrains-lifecycle-viewmodel-compose"))
             implementation(libs.lib("jetbrains-navigation-compose"))
-            implementation(libs.lib("cmp-ui-backhandler"))
         }
     }
 }

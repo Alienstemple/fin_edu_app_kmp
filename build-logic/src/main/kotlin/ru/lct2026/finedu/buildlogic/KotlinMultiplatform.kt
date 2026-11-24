@@ -52,6 +52,8 @@ internal fun Project.configureComposeMultiplatform(publicResources: Boolean = fa
         implementation(libs.lib("test-espresso-core"))
         // ComponentActivity для createComposeRule() под Robolectric.
         implementation(libs.lib("androidx-compose-ui-test-manifest"))
+        // Та же Activity, что в приложении: с 1.12 она даёт NavigationEventDispatcher для FinBackHandler.
+        implementation(libs.lib("androidx-activity-compose"))
         implementation(libs.lib("test-robolectric"))
     }
 }

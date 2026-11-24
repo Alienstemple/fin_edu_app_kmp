@@ -12,6 +12,7 @@ kotlin {
             api(libs.jetbrains.lifecycle.viewmodel.compose)
             implementation(libs.jetbrains.lifecycle.runtime.compose)
             implementation(libs.compottie)
+            implementation(libs.jetbrains.navigationevent.compose)
         }
     }
 }

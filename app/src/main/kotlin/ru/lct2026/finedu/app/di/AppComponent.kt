@@ -1,6 +1,7 @@
 package ru.lct2026.finedu.app.di
 
 import android.content.Context
+import kotlin.time.Clock
 import me.tatarka.inject.annotations.Component
 import me.tatarka.inject.annotations.Provides
 import ru.lct2026.finedu.app.sound.GameAudio
@@ -48,4 +49,7 @@ internal abstract class AppComponent(@get:Provides val context: Context) :
 
     @Provides
     fun provideGameStoragePath(): GameStoragePath = gameStoragePath(context)
+
+    @Provides
+    fun provideClock(): Clock = Clock.System
 }

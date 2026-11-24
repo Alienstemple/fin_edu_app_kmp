@@ -1,11 +1,11 @@
 plugins {
-    alias(libs.plugins.convention.android.feature.ui)
+    alias(libs.plugins.convention.kmp.feature.ui)
 }
 
-android {
-    namespace = "ru.lct2026.finedu.feature.budget.ui"
-}
-
-dependencies {
-    implementation(projects.appModules.features.budget.domain)
+kotlin {
+    sourceSets {
+        commonMain.dependencies {
+            implementation(projects.appModules.features.budget.domain)
+        }
+    }
 }
